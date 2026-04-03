@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Main background: #FFE9CF (palette in src/theme/colors.js) */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+  body {
+    background-color: #FFE9CF;
+    overflow-x: hidden;
+    @apply text-black font-sans antialiased;
+  }
+}
+
+/* Prevent horizontal overflow from any child */
+#root {
+  overflow-x: clip;
+}
+
+/* Safe area for fixed elements on notched devices */
+.safe-area-inset {
+  top: max(0.75rem, env(safe-area-inset-top, 0px));
+  left: max(0.75rem, env(safe-area-inset-left, 0px));
+}
+
+/* Confetti celebration animation */
+@keyframes confettiFall {
+  0% {
+    opacity: 1;
+    transform: translateY(0) translateX(0) rotate(0deg) scale(1);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(100vh) translateX(var(--drift, 0px)) rotate(720deg) scale(0.5);
+  }
+}
+
+@keyframes confettiRise {
+  0% {
+    opacity: 1;
+    transform: translateY(0) translateX(0) rotate(0deg) scale(1);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100vh) translateX(var(--drift, 0px)) rotate(-720deg) scale(0.5);
+  }
+}
+
+/* Firecracker burst animation */
+@keyframes fireworkLaunch {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(var(--launch-height, -40vh)) scale(1);
+  }
+}
+
+@keyframes fireworkBurst {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--burst-x), var(--burst-y)) scale(0.2);
+  }
+}
+
+@keyframes fireworkGlow {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 0.6; }
+}
+
+/* Contact section styling */
+#contact {
+  text-align: center !important;
+}
+#contact .contact-links {
+  flex-direction: column !important;
+}
+@media (min-width: 640px) {
+  #contact .contact-links {
+    flex-direction: row !important;
+  }
+}
