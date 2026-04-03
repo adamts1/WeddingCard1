@@ -344,10 +344,10 @@ export default function RSVP() {
       <Firecrackers />
       <section
         id="rsvp"
-        className="py-8 md:min-h-screen md:flex md:flex-col md:justify-center md:py-24 px-4 md:px-10 bg-[#FFE9CF] overflow-hidden"
+        className="py-8 md:min-h-screen md:flex md:flex-col md:justify-center md:py-24 px-4 md:px-10 bg-[#F6F4F0] overflow-hidden"
       >
         <div className="max-w-lg md:max-w-2xl lg:max-w-3xl mx-auto text-center w-full">
-          <div className="bg-[#FFE9CF] rounded-2xl shadow-soft-lg p-6 md:p-12 border border-coral/20 animate-fade-in-up">
+          <div className="bg-[#F6F4F0] rounded-2xl shadow-soft-lg p-6 md:p-12 border border-coral/20 animate-fade-in-up">
             <div className="w-14 h-14 md:w-18 md:h-18 rounded-full bg-coral/15 flex items-center justify-center mx-auto mb-4 md:mb-6 animate-bounce-in">
               <svg className="w-7 h-7 md:w-9 md:h-9 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -376,7 +376,7 @@ export default function RSVP() {
   return (
     <section
       id="rsvp"
-      className="py-8 md:min-h-screen md:flex md:flex-col md:justify-center md:py-24 px-4 md:px-10 bg-[#FFE9CF] text-black overflow-hidden"
+      className="py-8 md:min-h-screen md:flex md:flex-col md:justify-center md:py-24 px-4 md:px-10 bg-[#F6F4F0] text-black overflow-hidden"
     >
       <div className="max-w-lg md:max-w-2xl lg:max-w-3xl mx-auto w-full">
         <h2 className="font-opensans text-3xl md:text-4xl lg:text-5xl text-center text-black mb-2 md:mb-4">
@@ -415,7 +415,7 @@ export default function RSVP() {
           {guests.map((guest, i) => (
             <div
               key={i}
-              className="rounded-xl border border-black/15 bg-[#FFE9CF]/40 p-4 space-y-3"
+              className="rounded-xl border border-black/15 bg-[#F6F4F0]/40 p-4 space-y-3"
             >
               <p className="font-sans text-sm font-semibold text-black/70">{t.guestLabel(i)}</p>
               <div>

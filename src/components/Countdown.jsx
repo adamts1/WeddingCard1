@@ -37,7 +37,7 @@ export default function Countdown({ embedded = false }) {
   }, [])
 
   const Wrapper = embedded ? 'div' : 'section'
-  const wrapperClass = embedded ? 'w-full max-w-2xl mx-auto border-0' : 'py-12 md:py-16 px-4 bg-[#FFE9CF]'
+  const wrapperClass = embedded ? 'w-full max-w-2xl mx-auto border-0' : 'py-12 md:py-16 px-4 bg-[#F6F4F0]'
 
   if (timeLeft.done) {
     return (
@@ -64,7 +64,7 @@ export default function Countdown({ embedded = false }) {
           {units.map(({ value, label }) => (
             <div
               key={label}
-              className={`flex flex-col items-center rounded-lg bg-[#FFE9CF]/90 border border-[#C4956A] ${isCompact ? 'min-w-[2.5rem] md:min-w-[4rem] lg:min-w-[5rem] py-1.5 px-1.5 md:py-3 md:px-3 shadow-sm' : 'min-w-[4.5rem] md:min-w-[5.5rem] py-4 px-3 rounded-xl shadow-soft'}`}
+              className={`flex flex-col items-center rounded-lg bg-[#F6F4F0]/90 border border-[#C4956A] ${isCompact ? 'min-w-[2.5rem] md:min-w-[4rem] lg:min-w-[5rem] py-1.5 px-1.5 md:py-3 md:px-3 shadow-sm' : 'min-w-[4.5rem] md:min-w-[5.5rem] py-4 px-3 rounded-xl shadow-soft'}`}
             >
               <span className={`font-display text-black tabular-nums ${isCompact ? 'text-lg md:text-2xl lg:text-3xl' : 'text-3xl md:text-4xl'}`}>
                 {pad(value)}

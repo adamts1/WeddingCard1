@@ -25,7 +25,7 @@ export default function InvitationDetails() {
   const t = texts.en
 
   return (
-    <section className="min-h-screen-dvh md:min-h-screen flex flex-col justify-center pt-16 md:pt-24 pb-8 md:pb-16 px-6 md:px-10 lg:px-16 bg-[#FFE9CF] text-black">
+    <section className="min-h-screen-dvh md:min-h-screen flex flex-col justify-center pt-16 md:pt-24 pb-8 md:pb-16 px-6 md:px-10 lg:px-16 bg-[#F6F4F0] text-black">
       <div className="w-full max-w-3xl mx-auto flex flex-row justify-between items-start gap-2 md:gap-12 mb-10 md:mb-14 min-w-0 overflow-hidden">
         <div className="flex flex-col text-center min-w-0 flex-1 overflow-hidden">
           <p className="text-[10px] md:text-xs uppercase tracking-widest text-black/70 mb-1 md:mb-2">{t.parentsBride}</p>

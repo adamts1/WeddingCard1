@@ -2,14 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Main background: #FFE9CF (palette in src/theme/colors.js) */
+/* Main background: #F6F4F0 (palette in src/theme/colors.js) */
 @layer base {
   html {
     scroll-behavior: smooth;
     overflow-x: hidden;
   }
   body {
-    background-color: #FFE9CF;
+    background-color: #F6F4F0;
     overflow-x: hidden;
     @apply text-black font-sans antialiased;
   }

@@ -11,7 +11,7 @@ import SectionDivider from './components/SectionDivider'
 export default function App() {
   return (
     <div
-      className="min-h-screen-dvh md:min-h-screen bg-[#FFE9CF]"
+      className="min-h-screen-dvh md:min-h-screen bg-[#F6F4F0]"
       dir="ltr"
       lang="en"
     >

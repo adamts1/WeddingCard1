@@ -7,11 +7,11 @@
 export const palette = {
   // Backgrounds
   peach: {
-    DEFAULT: '#FFE9CF',
+    DEFAULT: '#F6F4F0',
     light: '#FBF0E8',
     dark: '#EDD5C4',
   },
-  imageBg: '#FFE9CF',
+  imageBg: '#F6F4F0',
 
   // Accent / coral
   coral: {
