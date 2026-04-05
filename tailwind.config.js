@@ -10,21 +10,16 @@ export default {
     extend: {
       colors: {
         ...tailwindColors,
-        gray: {
-          200: '#000000',
-        },
       },
       fontFamily: {
-        display: ['Fredoka', 'Heebo', 'system-ui', 'sans-serif'],
-        opensans: ['Open Sans', 'Heebo', 'system-ui', 'sans-serif'],
-        serif: ['Playfair Display', 'Georgia', 'serif'],
+        display: ['Amatic SC', 'Heebo', 'system-ui', 'sans-serif'],
+        heading: ['Secular One', 'Heebo', 'system-ui', 'sans-serif'],
+        serif: ['Frank Ruhl Libre', 'Georgia', 'serif'],
         sans: ['Heebo', 'system-ui', 'sans-serif'],
       },
       animation: {
         'fade-in': 'fadeIn 1s ease-out forwards',
         'page-enter': 'pageEnter 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards',
-        'music-btn-enter': 'musicBtnEnter 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.4s forwards',
-        'lang-switch': 'langSwitch 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards',
         'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
         'bounce-in': 'bounceIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s forwards',
       },
@@ -35,15 +30,6 @@ export default {
         },
         pageEnter: {
           '0%': { opacity: '0', transform: 'translateY(24px) scale(0.98)' },
-          '100%': { opacity: '1', transform: 'translateY(0) scale(1)' },
-        },
-        langSwitch: {
-          '0%': { opacity: '0', transform: 'translateY(8px)' },
-          '100%': { opacity: '1', transform: 'translateY(0)' },
-        },
-        musicBtnEnter: {
-          '0%': { opacity: '0', transform: 'translateY(16px) scale(0.9)' },
-          '70%': { opacity: '1', transform: 'translateY(-2px) scale(1.02)' },
           '100%': { opacity: '1', transform: 'translateY(0) scale(1)' },
         },
         fadeInUp: {

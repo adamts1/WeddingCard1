@@ -1,45 +1,39 @@
 /**
- * Section 4 – RSVP: confirmation form in the invitation style.
- * Name, phone x number of guests, shared message, submit to email + Supabase.
+ * Section 4 – RSVP: confirmation form.
  */
 
 import { useState, useEffect } from 'react'
-
 import { supabase } from '../lib/supabase'
 import emailjs from '@emailjs/browser'
 
-const texts = {
-  en: {
-    rsvp: 'RSVP',
-    intro: 'We can\'t wait to celebrate this special day with you!',
-    contactTitle: 'Contact Us',
-    person1: 'Daniel',
-    person2: 'Marceline',
-    phonePerson1: '000-0000000',
-    phonePerson2: '000-0000000',
-    adults: 'Number of Guests',
-    guestLabel: (i) => `Guest ${i + 1}`,
-    nameLabel: 'Full Name *',
-    phoneLabel: 'Phone Number *',
-    messageLabel: 'Your message to the couple',
-    submit: 'Submit',
-    submitting: 'Submitting...',
-    ariaMinus: 'Decrease',
-    ariaPlus: 'Increase',
-    thankYou: 'Thank You for Your RSVP',
-    successMsg: 'Your confirmation has been received. See you at the celebration!',
-    errName: 'Please enter a full name',
-    errNameShort: 'Name must be at least 2 characters',
-    errPhone: 'Please enter a phone number',
-    errPhoneInvalid: 'Please enter a valid phone number',
-    errMinGuests: 'Please add at least one guest',
-    errSubmit: 'Error submitting, please try again',
-    removeGuest: 'Remove',
-  },
+const t = {
+  rsvp: 'אישור הגעה',
+  intro: 'נשמח לראותכם חוגגים איתנו!',
+  contactTitle: 'צרו קשר',
+  person1: 'יעל',
+  person2: 'אבירם',
+  phonePerson1: '000-0000000',
+  phonePerson2: '000-0000000',
+  adults: 'מספר אורחים',
+  guestLabel: (i) => `אורח/ת ${i + 1}`,
+  nameLabel: 'שם מלא *',
+  phoneLabel: 'מספר טלפון *',
+  messageLabel: 'הודעה לזוג',
+  submit: 'שליחה',
+  submitting: 'שולח...',
+  ariaMinus: 'הפחת',
+  ariaPlus: 'הוסף',
+  thankYou: 'תודה על האישור!',
+  successMsg: 'האישור התקבל בהצלחה. נתראה בשמחה!',
+  errName: 'נא להזין שם מלא',
+  errNameShort: 'השם חייב להכיל לפחות 2 תווים',
+  errPhone: 'נא להזין מספר טלפון',
+  errPhoneInvalid: 'מספר טלפון לא תקין',
+  errMinGuests: 'נא להוסיף לפחות אורח אחד',
+  errSubmit: 'שגיאה בשליחה, נא לנסות שוב',
 }
 
 function validateGuests(guests, phone) {
-  const t = texts.en
   const phoneError = !phone.trim() ? t.errPhone : !/^[\d\s\-+()]{9,20}$/.test(phone.trim()) ? t.errPhoneInvalid : ''
   const nameErrors = guests.map((g) => {
     if (!g.name.trim()) return t.errName
@@ -49,8 +43,8 @@ function validateGuests(guests, phone) {
   return { nameErrors, phoneError }
 }
 
-const CONFETTI_COLORS = ['#FFD700', '#FF6B6B', '#C084FC', '#F472B6', '#34D399', '#60A5FA', '#FBBF24', '#F3E3FF']
-const CONFETTI_SHAPES = ['circle', 'square', 'heart', 'love']
+const CONFETTI_COLORS = ['#E8A0B5', '#CF43A8', '#D4789A', '#F0D4DE', '#508330', '#7CB342', '#FFD700', '#F472B6']
+const CONFETTI_SHAPES = ['circle', 'square', 'heart', 'leaf']
 
 function makePieces(count, direction, wave = 0) {
   return Array.from({ length: count }, (_, i) => ({
@@ -100,20 +94,10 @@ function Confetti() {
             <svg width={p.size} height={p.size} viewBox="0 0 24 24" fill={p.color}>
               <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
             </svg>
-          ) : p.shape === 'love' ? (
-            <span
-              style={{
-                display: 'block',
-                fontSize: p.size * 0.8,
-                fontWeight: 'bold',
-                color: p.color,
-                transform: `rotate(${p.rotation}deg)`,
-                whiteSpace: 'nowrap',
-                lineHeight: 1,
-              }}
-            >
-              Love
-            </span>
+          ) : p.shape === 'leaf' ? (
+            <svg width={p.size} height={p.size} viewBox="0 0 24 24" fill={p.color} style={{ transform: `rotate(${p.rotation}deg)` }}>
+              <path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66L7 19c2-2 4-4 8-5 3.5-1 6.4-1 8-1-1-3-3.5-6-6-5z" />
+            </svg>
           ) : (
             <span
               style={{
@@ -132,7 +116,7 @@ function Confetti() {
   )
 }
 
-const FIREWORK_COLORS = ['#FFD700', '#FF6B6B', '#C084FC', '#F472B6', '#60A5FA', '#FBBF24', '#34D399', '#FF4500']
+const FIREWORK_COLORS = ['#E8A0B5', '#CF43A8', '#D4789A', '#508330', '#7CB342', '#FFD700', '#F472B6', '#F0D4DE']
 
 function makeFireworks(count) {
   return Array.from({ length: count }, (_, i) => {
@@ -179,7 +163,6 @@ function Firecrackers() {
             bottom: '0%',
           }}
         >
-          {/* Launch trail */}
           <div
             style={{
               width: 3,
@@ -192,7 +175,6 @@ function Firecrackers() {
               animationFillMode: 'forwards',
             }}
           />
-          {/* Burst sparks */}
           <div
             className="absolute"
             style={{
@@ -219,7 +201,6 @@ function Firecrackers() {
                 }}
               />
             ))}
-            {/* Glow effect */}
             <div
               className="absolute -translate-x-1/2 -translate-y-1/2"
               style={{
@@ -239,7 +220,7 @@ function Firecrackers() {
 }
 
 const inputBase =
-  'w-full px-4 py-3 md:py-3.5 rounded-lg border border-black/30 bg-[#F3E3FF] text-black md:text-lg placeholder:text-black/50 focus:border-coral focus:ring-2 focus:ring-coral/20 outline-none transition-all duration-200'
+  'w-full px-4 py-3 md:py-3.5 rounded-lg border border-blush-light bg-cream-light text-olive md:text-lg placeholder:text-olive-light/50 focus:border-blush-dark focus:ring-2 focus:ring-blush/20 outline-none transition-all duration-200'
 
 const emptyGuest = () => ({ name: '' })
 
@@ -252,7 +233,6 @@ export default function RSVP() {
   const [submitted, setSubmitted] = useState(false)
   const [submitting, setSubmitting] = useState(false)
   const [submitError, setSubmitError] = useState('')
-  const t = texts.en
 
   const setGuestCount = (delta) => {
     setGuests((prev) => {
@@ -299,7 +279,7 @@ export default function RSVP() {
         name: g.name.trim(),
         phone: phone.trim(),
         message: message.trim(),
-        lang: 'en',
+        lang: 'he',
         created_at: new Date().toISOString(),
       }))
 
@@ -310,7 +290,7 @@ export default function RSVP() {
 
       const guestList = guests
         .map((g, i) => `${i + 1}. ${g.name}`)
-        .join('\n') + `\nPhone: ${phone.trim()}`
+        .join('\n') + `\nטלפון: ${phone.trim()}`
 
       try {
         await emailjs.send(
@@ -344,25 +324,25 @@ export default function RSVP() {
       <Firecrackers />
       <section
         id="rsvp"
-        className="py-8 md:min-h-screen md:flex md:flex-col md:justify-center md:py-24 px-4 md:px-10 bg-[#F6F4F0] overflow-hidden"
+        className="py-8 md:min-h-screen md:flex md:flex-col md:justify-center md:py-24 px-4 md:px-10 bg-cream overflow-hidden"
       >
         <div className="max-w-lg md:max-w-2xl lg:max-w-3xl mx-auto text-center w-full">
-          <div className="bg-[#F6F4F0] rounded-2xl shadow-soft-lg p-6 md:p-12 border border-coral/20 animate-fade-in-up">
-            <div className="w-14 h-14 md:w-18 md:h-18 rounded-full bg-coral/15 flex items-center justify-center mx-auto mb-4 md:mb-6 animate-bounce-in">
-              <svg className="w-7 h-7 md:w-9 md:h-9 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="bg-cream rounded-2xl shadow-soft-lg p-6 md:p-12 border border-blush-light animate-fade-in-up">
+            <div className="w-14 h-14 md:w-18 md:h-18 rounded-full bg-green/15 flex items-center justify-center mx-auto mb-4 md:mb-6 animate-bounce-in">
+              <svg className="w-7 h-7 md:w-9 md:h-9 text-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
             </div>
-            <h2 className="font-display text-2xl md:text-3xl text-black mb-2">{t.thankYou}</h2>
-            <p className="text-black/80">{t.successMsg}</p>
+            <h2 className="font-display text-3xl md:text-4xl text-olive font-bold mb-2">{t.thankYou}</h2>
+            <p className="text-olive-light font-sans">{t.successMsg}</p>
           </div>
-          <div id="contact" className="mt-6 pt-4 md:mt-12 md:pt-8 border-t border-black/20 text-center">
-            <h2 className="font-display text-xl md:text-2xl text-black mb-4">{t.contactTitle}</h2>
+          <div id="contact" className="mt-6 pt-4 md:mt-12 md:pt-8 border-t border-blush-light text-center">
+            <h2 className="font-display text-2xl md:text-3xl text-olive font-bold mb-4">{t.contactTitle}</h2>
             <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-8 font-sans pb-4">
-              <a href="tel:+0000000000" className="text-black hover:opacity-80 transition-opacity">
+              <a href="tel:+0000000000" className="text-olive hover:text-blush-dark transition-colors">
                 {t.person1}: {t.phonePerson1}
               </a>
-              <a href="tel:+0000000000" className="text-black hover:opacity-80 transition-opacity">
+              <a href="tel:+0000000000" className="text-olive hover:text-blush-dark transition-colors">
                 {t.person2}: {t.phonePerson2}
               </a>
             </div>
@@ -376,35 +356,35 @@ export default function RSVP() {
   return (
     <section
       id="rsvp"
-      className="py-8 md:min-h-screen md:flex md:flex-col md:justify-center md:py-24 px-4 md:px-10 bg-[#F6F4F0] text-black overflow-hidden"
+      className="py-8 md:min-h-screen md:flex md:flex-col md:justify-center md:py-24 px-4 md:px-10 bg-cream text-olive overflow-hidden"
     >
       <div className="max-w-lg md:max-w-2xl lg:max-w-3xl mx-auto w-full">
-        <h2 className="font-opensans text-3xl md:text-4xl lg:text-5xl text-center text-black mb-2 md:mb-4">
+        <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-center font-bold mb-2 md:mb-4 text-[rgb(207,67,168)]">
           {t.rsvp}
         </h2>
-        <p className="text-center font-sans text-base md:text-lg text-black/80 mb-4 md:mb-8">
+        <p className="text-center font-sans text-base md:text-lg text-olive-light mb-4 md:mb-8">
           {t.intro}
         </p>
 
         <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
           {/* Guest count selector */}
           <div className="flex items-center justify-between gap-4">
-            <label className="font-sans text-sm md:text-base font-medium text-black">{t.adults}</label>
-            <div className="flex items-center border border-black/30 rounded-lg overflow-hidden bg-[#F3E3FF]">
+            <label className="font-sans text-sm md:text-base font-medium text-olive">{t.adults}</label>
+            <div className="flex items-center border border-blush-light rounded-lg overflow-hidden bg-cream-light">
               <button
                 type="button"
                 onClick={() => setGuestCount(-1)}
                 aria-label={t.ariaMinus}
-                className="w-10 h-10 flex items-center justify-center text-black hover:bg-black/10 transition-colors"
+                className="w-10 h-10 flex items-center justify-center text-olive hover:bg-blush-light/30 transition-colors"
               >
                 <span className="text-lg leading-none">−</span>
               </button>
-              <span className="w-12 text-center font-sans text-black tabular-nums">{guests.length}</span>
+              <span className="w-12 text-center font-sans text-olive tabular-nums">{guests.length}</span>
               <button
                 type="button"
                 onClick={() => setGuestCount(1)}
                 aria-label={t.ariaPlus}
-                className="w-10 h-10 flex items-center justify-center text-black hover:bg-black/10 transition-colors"
+                className="w-10 h-10 flex items-center justify-center text-olive hover:bg-blush-light/30 transition-colors"
               >
                 <span className="text-lg leading-none">+</span>
               </button>
@@ -415,13 +395,13 @@ export default function RSVP() {
           {guests.map((guest, i) => (
             <div
               key={i}
-              className="rounded-xl border border-black/15 bg-[#F6F4F0]/40 p-4 space-y-3"
+              className="rounded-xl border border-blush-light/50 bg-cream-light/40 p-4 space-y-3"
             >
-              <p className="font-sans text-sm font-semibold text-black/70">{t.guestLabel(i)}</p>
+              <p className="font-sans text-sm font-semibold text-olive-light">{t.guestLabel(i)}</p>
               <div>
                 <label
                   htmlFor={`name-${i}`}
-                  className="block font-sans text-sm font-medium text-black mb-1"
+                  className="block font-sans text-sm font-medium text-olive mb-1"
                 >
                   {t.nameLabel}
                 </label>
@@ -444,7 +424,7 @@ export default function RSVP() {
           <div>
             <label
               htmlFor="phone"
-              className="block font-sans text-sm font-medium text-black mb-1"
+              className="block font-sans text-sm font-medium text-olive mb-1"
             >
               {t.phoneLabel}
             </label>
@@ -463,7 +443,7 @@ export default function RSVP() {
 
           {/* Shared message */}
           <div>
-            <label htmlFor="message" className="block font-sans text-sm font-medium text-black mb-1">
+            <label htmlFor="message" className="block font-sans text-sm font-medium text-olive mb-1">
               {t.messageLabel}
             </label>
             <textarea
@@ -482,19 +462,19 @@ export default function RSVP() {
           <button
             type="submit"
             disabled={submitting}
-            className="w-full py-3.5 px-6 rounded-lg border-2 border-black bg-transparent text-black font-sans font-medium hover:bg-black/10 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full py-3.5 px-6 rounded-lg bg-[rgb(80,131,48)] text-white font-sans font-medium hover:bg-[rgb(92,148,58)] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {submitting ? t.submitting : t.submit}
           </button>
         </form>
 
-        <div id="contact" className="mt-6 pt-4 md:mt-12 md:pt-8 border-t border-black/20 text-center">
-          <h2 className="font-display text-xl md:text-2xl text-black mb-3 md:mb-4">{t.contactTitle}</h2>
+        <div id="contact" className="mt-6 pt-4 md:mt-12 md:pt-8 border-t border-blush-light text-center">
+          <h2 className="font-display text-2xl md:text-3xl text-olive font-bold mb-3 md:mb-4">{t.contactTitle}</h2>
           <div className="flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-8 font-sans pb-10">
-            <a href="tel:+0000000000" className="text-black hover:opacity-80 transition-opacity">
+            <a href="tel:+0000000000" className="text-olive hover:text-blush-dark transition-colors">
               {t.person1}: {t.phonePerson1}
             </a>
-            <a href="tel:+0000000000" className="text-black hover:opacity-80 transition-opacity">
+            <a href="tel:+0000000000" className="text-olive hover:text-blush-dark transition-colors">
               {t.person2}: {t.phonePerson2}
             </a>
           </div>

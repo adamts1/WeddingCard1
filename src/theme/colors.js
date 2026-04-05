@@ -1,23 +1,42 @@
 /**
- * Wedding invitation color palette.
- * Change these values to update colors across the entire app.
- * Tailwind uses these in tailwind.config.js; use class names like bg-peach, text-coral-dark, etc.
+ * Wedding invitation color palette — soft floral pinks & greens.
+ * Derived from the flower assets and main.png.
  */
 
 export const palette = {
   // Backgrounds
-  peach: {
-    DEFAULT: '#F6F4F0',
-    light: '#FBF0E8',
-    dark: '#EDD5C4',
+  cream: {
+    DEFAULT: '#F5F2EC',
+    light: '#FAF8F4',
+    dark: '#EDE9E1',
   },
-  imageBg: '#F6F4F0',
 
-  // Accent / coral
-  coral: {
-    DEFAULT: '#E7624F',
-    light: '#EE8A7C',
-    dark: '#D04A38',
+  // Soft pink (blush — flowers, borders, buttons)
+  blush: {
+    DEFAULT: '#E8A0B5',
+    light: '#F0D4DE',
+    dark: '#D4789A',
+  },
+
+  // Hot pink / magenta (names accent)
+  magenta: {
+    DEFAULT: '#CF43A8',
+    light: '#D96CBB',
+    dark: '#B8368F',
+  },
+
+  // Foliage green
+  green: {
+    DEFAULT: '#508330',
+    light: '#7CB342',
+    dark: '#3B6B2B',
+  },
+
+  // Olive / sage (body text)
+  olive: {
+    DEFAULT: '#6B6B3E',
+    light: '#8B8B5E',
+    muted: '#7D7D50',
   },
 }
 
@@ -25,17 +44,11 @@ export const palette = {
  * Tailwind theme colors object (spread into theme.extend.colors).
  */
 export const tailwindColors = {
-  peach: {
-    DEFAULT: palette.peach.DEFAULT,
-    light: palette.peach.light,
-    dark: palette.peach.dark,
-  },
-  'image-bg': palette.imageBg,
-  coral: {
-    DEFAULT: palette.coral.DEFAULT,
-    light: palette.coral.light,
-    dark: palette.coral.dark,
-  },
+  cream: palette.cream,
+  blush: palette.blush,
+  magenta: palette.magenta,
+  green: palette.green,
+  olive: palette.olive,
 }
 
 export default palette

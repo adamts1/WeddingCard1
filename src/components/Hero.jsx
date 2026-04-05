@@ -24,7 +24,7 @@ const flowerRegions = [
 
 export default function Hero() {
   return (
-    <header className="relative w-full bg-[#F6F4F0] md:px-4 md:py-6 md:flex md:justify-center">
+    <header className="relative w-full bg-cream md:px-4 md:py-6 md:flex md:justify-center">
       {/*
         Wrapper – fills the full mobile viewport (100dvh), edge-to-edge.
         On desktop: capped width, aspect ratio from the image.

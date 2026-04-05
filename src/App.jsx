@@ -1,6 +1,6 @@
 /**
  * Wedding invitation – single page, smooth scroll.
- * Daniel & Marceline – December 14, 2026.
+ * יעל ואבירם – כ״ה במאי 2026.
  */
 
 import Hero from './components/Hero'
@@ -11,9 +11,9 @@ import SectionDivider from './components/SectionDivider'
 export default function App() {
   return (
     <div
-      className="min-h-screen-dvh md:min-h-screen bg-[#F6F4F0]"
-      dir="ltr"
-      lang="en"
+      className="min-h-screen-dvh md:min-h-screen bg-cream"
+      dir="rtl"
+      lang="he"
     >
       <div className="animate-page-enter opacity-0">
         <Hero />
@@ -24,10 +24,10 @@ export default function App() {
         <div
           className="relative w-full h-[48px] md:h-[64px]"
           style={{
-            background: 'radial-gradient(57% 116% at 50% 116%, rgb(232, 133, 58) 98%, transparent 99%) center center / 95px 103% repeat-x',
+            background: 'radial-gradient(57% 116% at 50% 116%, rgb(232, 160, 181) 98%, transparent 99%) center center / 95px 103% repeat-x',
           }}
         >
-          <p className="absolute inset-0 flex items-end justify-center pb-0 text-[10px] font-bold text-gray-700">
+          <p className="absolute inset-0 flex items-end justify-center pb-0 text-[10px] font-bold text-olive">
             &copy; TSITYAT - AI Agency
           </p>
         </div>

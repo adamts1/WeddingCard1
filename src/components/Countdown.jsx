@@ -4,10 +4,14 @@
 
 import { useState, useEffect } from 'react'
 
-const TARGET_DATE = new Date(2026, 11, 14, 19, 0, 0) // December 14, 2026 at 07:00 PM
+const TARGET_DATE = new Date(2026, 4, 25, 19, 0, 0) // May 25, 2026 at 07:00 PM
 
 const labels = {
-  en: { days: 'days', hours: 'hours', minutes: 'minutes', seconds: 'seconds', done: "It's the big day!" },
+  days: 'ימים',
+  hours: 'שעות',
+  minutes: 'דקות',
+  seconds: 'שניות',
+  done: 'היום הגדול הגיע!',
 }
 
 function pad(n) {
@@ -29,7 +33,6 @@ function getTimeLeft() {
 
 export default function Countdown({ embedded = false }) {
   const [timeLeft, setTimeLeft] = useState(getTimeLeft)
-  const t = labels.en
 
   useEffect(() => {
     const id = setInterval(() => setTimeLeft(getTimeLeft()), 1000)
@@ -37,23 +40,23 @@ export default function Countdown({ embedded = false }) {
   }, [])
 
   const Wrapper = embedded ? 'div' : 'section'
-  const wrapperClass = embedded ? 'w-full max-w-2xl mx-auto border-0' : 'py-12 md:py-16 px-4 bg-[#F6F4F0]'
+  const wrapperClass = embedded ? 'w-full max-w-2xl mx-auto border-0' : 'py-12 md:py-16 px-4 bg-cream'
 
   if (timeLeft.done) {
     return (
       <Wrapper className={wrapperClass}>
         <div className="max-w-2xl mx-auto text-center">
-          <p className="font-display text-2xl text-black">{t.done}</p>
+          <p className="font-display text-2xl text-olive">{labels.done}</p>
         </div>
       </Wrapper>
     )
   }
 
   const units = [
-    { value: timeLeft.days, label: t.days },
-    { value: timeLeft.hours, label: t.hours },
-    { value: timeLeft.minutes, label: t.minutes },
-    { value: timeLeft.seconds, label: t.seconds },
+    { value: timeLeft.days, label: labels.days },
+    { value: timeLeft.hours, label: labels.hours },
+    { value: timeLeft.minutes, label: labels.minutes },
+    { value: timeLeft.seconds, label: labels.seconds },
   ]
 
   const isCompact = embedded
@@ -64,12 +67,12 @@ export default function Countdown({ embedded = false }) {
           {units.map(({ value, label }) => (
             <div
               key={label}
-              className={`flex flex-col items-center rounded-lg bg-[#F6F4F0]/90 border border-[#C4956A] ${isCompact ? 'min-w-[2.5rem] md:min-w-[4rem] lg:min-w-[5rem] py-1.5 px-1.5 md:py-3 md:px-3 shadow-sm' : 'min-w-[4.5rem] md:min-w-[5.5rem] py-4 px-3 rounded-xl shadow-soft'}`}
+              className={`flex flex-col items-center rounded-lg bg-cream-light border border-blush-light ${isCompact ? 'min-w-[2.5rem] md:min-w-[4rem] lg:min-w-[5rem] py-1.5 px-1.5 md:py-3 md:px-3 shadow-sm' : 'min-w-[4.5rem] md:min-w-[5.5rem] py-4 px-3 rounded-xl shadow-soft'}`}
             >
-              <span className={`font-display text-black tabular-nums ${isCompact ? 'text-lg md:text-2xl lg:text-3xl' : 'text-3xl md:text-4xl'}`}>
+              <span className={`font-display text-olive tabular-nums font-bold ${isCompact ? 'text-lg md:text-2xl lg:text-3xl' : 'text-3xl md:text-4xl'}`}>
                 {pad(value)}
               </span>
-              <span className={`font-sans text-black/80 ${isCompact ? 'text-[10px] md:text-sm mt-0.5' : 'text-sm mt-1'}`}>{label}</span>
+              <span className={`font-sans text-olive-light ${isCompact ? 'text-[10px] md:text-sm mt-0.5' : 'text-sm mt-1'}`}>{label}</span>
             </div>
           ))}
         </div>

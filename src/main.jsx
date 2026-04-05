@@ -8,12 +8,15 @@ import App from './App.jsx'
 // Apply palette as CSS variables so the app style is driven by src/theme/colors.js
 function applyPalette() {
   const root = document.documentElement
-  root.style.setProperty('--color-peach', palette.peach.DEFAULT)
-  root.style.setProperty('--color-peach-light', palette.peach.light)
-  root.style.setProperty('--color-peach-dark', palette.peach.dark)
-  root.style.setProperty('--color-coral', palette.coral.DEFAULT)
-  root.style.setProperty('--color-coral-light', palette.coral.light)
-  root.style.setProperty('--color-coral-dark', palette.coral.dark)
+  root.style.setProperty('--color-cream', palette.cream.DEFAULT)
+  root.style.setProperty('--color-cream-light', palette.cream.light)
+  root.style.setProperty('--color-cream-dark', palette.cream.dark)
+  root.style.setProperty('--color-blush', palette.blush.DEFAULT)
+  root.style.setProperty('--color-blush-light', palette.blush.light)
+  root.style.setProperty('--color-blush-dark', palette.blush.dark)
+  root.style.setProperty('--color-magenta', palette.magenta.DEFAULT)
+  root.style.setProperty('--color-green', palette.green.DEFAULT)
+  root.style.setProperty('--color-olive', palette.olive.DEFAULT)
 }
 applyPalette()
 
