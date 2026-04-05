@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "stop": "kill -9 $(lsof -ti:5174)"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
