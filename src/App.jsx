@@ -7,6 +7,7 @@ import Hero from './components/Hero'
 import InvitationDetails from './components/InvitationDetails'
 import RSVP from './components/RSVP'
 import SectionDivider from './components/SectionDivider'
+import footerImg from '../assets/footer.png'
 
 export default function App() {
   return (
@@ -21,16 +22,18 @@ export default function App() {
         <InvitationDetails />
         <SectionDivider />
         <RSVP />
-        <div
-          className="relative w-full h-[48px] md:h-[64px]"
-          style={{
-            background: 'radial-gradient(57% 116% at 50% 116%, rgb(232, 160, 181) 98%, transparent 99%) center center / 95px 103% repeat-x',
-          }}
-        >
-          <p className="absolute inset-0 flex items-end justify-center pb-0 text-[10px] font-bold text-olive">
+        <footer className="relative w-full overflow-hidden">
+          <div className="w-[200%] -ml-[50%] md:w-full md:ml-0">
+            <img
+              src={footerImg}
+              alt=""
+              className="block w-full h-auto"
+            />
+          </div>
+          <p className="absolute bottom-1 left-0 right-0 text-center text-[10px] font-bold text-olive">
             &copy; TSITYAT - AI Agency
           </p>
-        </div>
+        </footer>
       </div>
     </div>
   )
