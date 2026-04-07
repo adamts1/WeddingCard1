@@ -1,24 +1,34 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
-import { palette } from './theme/colors'
 import './index.css'
 import App from './App.jsx'
 
-// Apply palette as CSS variables so the app style is driven by src/theme/colors.js
-function applyPalette() {
-  const root = document.documentElement
-  root.style.setProperty('--color-cream', palette.cream.DEFAULT)
-  root.style.setProperty('--color-cream-light', palette.cream.light)
-  root.style.setProperty('--color-cream-dark', palette.cream.dark)
-  root.style.setProperty('--color-blush', palette.blush.DEFAULT)
-  root.style.setProperty('--color-blush-light', palette.blush.light)
-  root.style.setProperty('--color-blush-dark', palette.blush.dark)
-  root.style.setProperty('--color-magenta', palette.magenta.DEFAULT)
-  root.style.setProperty('--color-green', palette.green.DEFAULT)
-  root.style.setProperty('--color-olive', palette.olive.DEFAULT)
+import { config as design1Config } from './designs/design1/config'
+import { config as design2Config } from './designs/design2/config'
+
+const designs = {
+  '/design1': design1Config,
+  '/design2': design2Config,
 }
-applyPalette()
+
+function applyPalette(palette) {
+  const root = document.documentElement
+  for (const [group, shades] of Object.entries(palette)) {
+    if (typeof shades === 'string') {
+      root.style.setProperty(`--color-${group}`, shades)
+    } else {
+      for (const [variant, value] of Object.entries(shades)) {
+        const suffix = variant === 'DEFAULT' ? '' : `-${variant}`
+        root.style.setProperty(`--color-${group}${suffix}`, value)
+      }
+    }
+  }
+}
+
+// Apply palette matching the current URL path
+const match = Object.keys(designs).find((p) => window.location.pathname.startsWith(p))
+applyPalette((match ? designs[match] : design1Config).palette)
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

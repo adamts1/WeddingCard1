@@ -1,19 +1,16 @@
 /**
- * Section 4 – RSVP: confirmation form.
+ * Shared RSVP form with celebration effects.
+ * Receives all text labels, colors, and contact info via `config` prop.
  */
 
 import { useState, useEffect } from 'react'
 import { supabase } from '../lib/supabase'
 import emailjs from '@emailjs/browser'
 
-const t = {
+const defaultLabels = {
   rsvp: 'אישור הגעה',
   intro: 'נשמח לראותכם חוגגים איתנו!',
   contactTitle: 'צרו קשר',
-  person1: 'יעל',
-  person2: 'אבירם',
-  phonePerson1: '000-0000000',
-  phonePerson2: '000-0000000',
   adults: 'מספר אורחים',
   guestLabel: (i) => `אורח/ת ${i + 1}`,
   nameLabel: 'שם מלא *',
@@ -33,27 +30,26 @@ const t = {
   errSubmit: 'שגיאה בשליחה, נא לנסות שוב',
 }
 
-function validateGuests(guests, phone) {
-  const phoneError = !phone.trim() ? t.errPhone : !/^[\d\s\-+()]{9,20}$/.test(phone.trim()) ? t.errPhoneInvalid : ''
+function validateGuests(guests, phone, labels) {
+  const phoneError = !phone.trim() ? labels.errPhone : !/^[\d\s\-+()]{9,20}$/.test(phone.trim()) ? labels.errPhoneInvalid : ''
   const nameErrors = guests.map((g) => {
-    if (!g.name.trim()) return t.errName
-    if (g.name.trim().length < 2) return t.errNameShort
+    if (!g.name.trim()) return labels.errName
+    if (g.name.trim().length < 2) return labels.errNameShort
     return ''
   })
   return { nameErrors, phoneError }
 }
 
-const CONFETTI_COLORS = ['#E8A0B5', '#CF43A8', '#D4789A', '#F0D4DE', '#508330', '#7CB342', '#FFD700', '#F472B6']
 const CONFETTI_SHAPES = ['circle', 'square', 'heart', 'leaf']
 
-function makePieces(count, direction, wave = 0) {
+function makePieces(count, direction, wave = 0, colors) {
   return Array.from({ length: count }, (_, i) => ({
     id: `${direction}-w${wave}-${i}`,
     left: Math.random() * 100,
     delay: wave * 1.5 + Math.random() * 2,
     duration: 2.5 + Math.random() * 2.5,
     size: 5 + Math.random() * 14,
-    color: CONFETTI_COLORS[Math.floor(Math.random() * CONFETTI_COLORS.length)],
+    color: colors[Math.floor(Math.random() * colors.length)],
     shape: CONFETTI_SHAPES[Math.floor(Math.random() * CONFETTI_SHAPES.length)],
     rotation: Math.random() * 360,
     drift: -50 + Math.random() * 100,
@@ -61,17 +57,17 @@ function makePieces(count, direction, wave = 0) {
   }))
 }
 
-function Confetti() {
+function Confetti({ colors }) {
   const [pieces, setPieces] = useState([])
 
   useEffect(() => {
     setPieces([
-      ...makePieces(60, 'down', 0),
-      ...makePieces(60, 'up', 0),
-      ...makePieces(50, 'down', 1),
-      ...makePieces(50, 'up', 1),
-      ...makePieces(40, 'down', 2),
-      ...makePieces(40, 'up', 2),
+      ...makePieces(60, 'down', 0, colors),
+      ...makePieces(60, 'up', 0, colors),
+      ...makePieces(50, 'down', 1, colors),
+      ...makePieces(50, 'up', 1, colors),
+      ...makePieces(40, 'down', 2, colors),
+      ...makePieces(40, 'up', 2, colors),
     ])
     const timer = setTimeout(() => setPieces([]), 10000)
     return () => clearTimeout(timer)
@@ -116,14 +112,12 @@ function Confetti() {
   )
 }
 
-const FIREWORK_COLORS = ['#E8A0B5', '#CF43A8', '#D4789A', '#508330', '#7CB342', '#FFD700', '#F472B6', '#F0D4DE']
-
-function makeFireworks(count) {
+function makeFireworks(count, colors) {
   return Array.from({ length: count }, (_, i) => {
     const x = 10 + Math.random() * 80
     const launchHeight = 30 + Math.random() * 40
     const delay = Math.random() * 4
-    const color = FIREWORK_COLORS[Math.floor(Math.random() * FIREWORK_COLORS.length)]
+    const color = colors[Math.floor(Math.random() * colors.length)]
     const sparks = Array.from({ length: 12 }, (_, j) => {
       const angle = (j / 12) * Math.PI * 2
       const dist = 40 + Math.random() * 60
@@ -140,13 +134,13 @@ function makeFireworks(count) {
   })
 }
 
-function Firecrackers() {
+function Firecrackers({ colors }) {
   const [fireworks, setFireworks] = useState([])
 
   useEffect(() => {
-    setFireworks(makeFireworks(8))
+    setFireworks(makeFireworks(8, colors))
     const timer2 = setTimeout(() => {
-      setFireworks((prev) => [...prev, ...makeFireworks(6)])
+      setFireworks((prev) => [...prev, ...makeFireworks(6, colors)])
     }, 3000)
     const cleanup = setTimeout(() => setFireworks([]), 10000)
     return () => { clearTimeout(timer2); clearTimeout(cleanup) }
@@ -224,7 +218,28 @@ const inputBase =
 
 const emptyGuest = () => ({ name: '' })
 
-export default function RSVP() {
+/**
+ * config shape:
+ * {
+ *   labels: { ... },           // override default Hebrew labels
+ *   contacts: [{ name, phone, tel }],  // contact people
+ *   celebrationColors: [...],  // colors for confetti/fireworks
+ *   submitButtonColor: '#508330',
+ *   submitButtonHoverColor: '#5C943A',
+ *   titleColor: '#CF43A8',
+ *   lang: 'he',
+ * }
+ */
+export default function RSVP({ config = {} }) {
+  const t = { ...defaultLabels, ...config.labels }
+  const contacts = config.contacts || []
+  const celebrationColors = config.celebrationColors || ['#E8A0B5', '#CF43A8', '#D4789A', '#F0D4DE', '#508330', '#7CB342', '#FFD700', '#F472B6']
+  const submitBg = config.submitButtonColor || '#508330'
+  const submitHover = config.submitButtonHoverColor || '#5C943A'
+  const titleColor = config.titleColor || '#CF43A8'
+  const lang = config.lang || 'he'
+  const sectionBg = config.sectionBg || 'bg-cream'
+
   const [guests, setGuests] = useState([emptyGuest()])
   const [phone, setPhone] = useState('')
   const [message, setMessage] = useState('')
@@ -267,7 +282,7 @@ export default function RSVP() {
       return
     }
 
-    const { nameErrors: nErrors, phoneError: pError } = validateGuests(guests, phone)
+    const { nameErrors: nErrors, phoneError: pError } = validateGuests(guests, phone, t)
     setNameErrors(nErrors)
     setPhoneError(pError)
     if (nErrors.some((e) => e) || pError) return
@@ -279,7 +294,7 @@ export default function RSVP() {
         name: g.name.trim(),
         phone: phone.trim(),
         message: message.trim(),
-        lang: 'he',
+        lang,
         created_at: new Date().toISOString(),
       }))
 
@@ -320,11 +335,11 @@ export default function RSVP() {
   if (submitted) {
     return (
       <>
-      <Confetti />
-      <Firecrackers />
+      <Confetti colors={celebrationColors} />
+      <Firecrackers colors={celebrationColors} />
       <section
         id="rsvp"
-        className="py-8 md:min-h-screen md:flex md:flex-col md:justify-center md:py-24 px-4 md:px-10 bg-cream overflow-hidden"
+        className={`py-8 md:min-h-screen md:flex md:flex-col md:justify-center md:py-24 px-4 md:px-10 ${sectionBg} overflow-hidden`}
       >
         <div className="max-w-lg md:max-w-2xl lg:max-w-3xl mx-auto text-center w-full">
           <div className="bg-cream rounded-2xl shadow-soft-lg p-6 md:p-12 border border-blush-light animate-fade-in-up">
@@ -336,17 +351,18 @@ export default function RSVP() {
             <h2 className="font-display text-3xl md:text-4xl text-olive font-bold mb-2">{t.thankYou}</h2>
             <p className="text-olive-light font-sans">{t.successMsg}</p>
           </div>
-          <div id="contact" className="mt-6 pt-4 md:mt-12 md:pt-8 border-t border-blush-light text-center">
-            <h2 className="font-display text-2xl md:text-3xl text-olive font-bold mb-4">{t.contactTitle}</h2>
-            <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-8 font-sans pb-4">
-              <a href="tel:+0000000000" className="text-olive hover:text-blush-dark transition-colors">
-                {t.person1}: {t.phonePerson1}
-              </a>
-              <a href="tel:+0000000000" className="text-olive hover:text-blush-dark transition-colors">
-                {t.person2}: {t.phonePerson2}
-              </a>
+          {contacts.length > 0 && (
+            <div id="contact" className="mt-6 pt-4 md:mt-12 md:pt-8 border-t border-blush-light text-center">
+              <h2 className="font-display text-2xl md:text-3xl text-olive font-bold mb-4">{t.contactTitle}</h2>
+              <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-8 font-sans pb-4">
+                {contacts.map((c, i) => (
+                  <a key={i} href={`tel:${c.tel}`} className="text-olive hover:text-blush-dark transition-colors">
+                    {c.name}: {c.phone}
+                  </a>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </section>
       </>
@@ -356,10 +372,13 @@ export default function RSVP() {
   return (
     <section
       id="rsvp"
-      className="py-8 md:min-h-screen md:flex md:flex-col md:justify-center md:py-24 px-4 md:px-10 bg-cream text-olive overflow-hidden"
+      className={`py-8 md:min-h-screen md:flex md:flex-col md:justify-center md:py-24 px-4 md:px-10 ${sectionBg} text-olive overflow-hidden`}
     >
       <div className="max-w-lg md:max-w-2xl lg:max-w-3xl mx-auto w-full">
-        <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-center font-bold mb-2 md:mb-4 text-[rgb(207,67,168)]">
+        <h2
+          className="font-display text-4xl md:text-5xl lg:text-6xl text-center font-bold mb-2 md:mb-4"
+          style={{ color: titleColor }}
+        >
           {t.rsvp}
         </h2>
         <p className="text-center font-sans text-base md:text-lg text-olive-light mb-4 md:mb-8">
@@ -367,7 +386,6 @@ export default function RSVP() {
         </p>
 
         <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
-          {/* Guest count selector */}
           <div className="flex items-center justify-between gap-4">
             <label className="font-sans text-sm md:text-base font-medium text-olive">{t.adults}</label>
             <div className="flex items-center border border-blush-light rounded-lg overflow-hidden bg-cream-light">
@@ -391,7 +409,6 @@ export default function RSVP() {
             </div>
           </div>
 
-          {/* Dynamic guest name fields */}
           {guests.map((guest, i) => (
             <div
               key={i}
@@ -420,7 +437,6 @@ export default function RSVP() {
             </div>
           ))}
 
-          {/* Phone – shared for all guests */}
           <div>
             <label
               htmlFor="phone"
@@ -441,7 +457,6 @@ export default function RSVP() {
             )}
           </div>
 
-          {/* Shared message */}
           <div>
             <label htmlFor="message" className="block font-sans text-sm font-medium text-olive mb-1">
               {t.messageLabel}
@@ -462,23 +477,27 @@ export default function RSVP() {
           <button
             type="submit"
             disabled={submitting}
-            className="w-full py-3.5 px-6 rounded-lg bg-[rgb(80,131,48)] text-white font-sans font-medium hover:bg-[rgb(92,148,58)] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full py-3.5 px-6 rounded-lg text-white font-sans font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            style={{ backgroundColor: submitBg }}
+            onMouseEnter={(e) => !submitting && (e.target.style.backgroundColor = submitHover)}
+            onMouseLeave={(e) => !submitting && (e.target.style.backgroundColor = submitBg)}
           >
             {submitting ? t.submitting : t.submit}
           </button>
         </form>
 
-        <div id="contact" className="mt-6 pt-4 md:mt-12 md:pt-8 border-t border-blush-light text-center">
-          <h2 className="font-display text-2xl md:text-3xl text-olive font-bold mb-3 md:mb-4">{t.contactTitle}</h2>
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-8 font-sans pb-10">
-            <a href="tel:+0000000000" className="text-olive hover:text-blush-dark transition-colors">
-              {t.person1}: {t.phonePerson1}
-            </a>
-            <a href="tel:+0000000000" className="text-olive hover:text-blush-dark transition-colors">
-              {t.person2}: {t.phonePerson2}
-            </a>
+        {contacts.length > 0 && (
+          <div id="contact" className="mt-6 pt-4 md:mt-12 md:pt-8 border-t border-blush-light text-center">
+            <h2 className="font-display text-2xl md:text-3xl text-olive font-bold mb-3 md:mb-4">{t.contactTitle}</h2>
+            <div className="flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-8 font-sans pb-10">
+              {contacts.map((c, i) => (
+                <a key={i} href={`tel:${c.tel}`} className="text-olive hover:text-blush-dark transition-colors">
+                  {c.name}: {c.phone}
+                </a>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </section>
   )

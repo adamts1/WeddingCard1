@@ -1,12 +1,11 @@
 /**
  * Countdown – days, hours, minutes, seconds until the wedding.
+ * Receives targetDate and labels as props so each design can customize.
  */
 
 import { useState, useEffect } from 'react'
 
-const TARGET_DATE = new Date(2026, 4, 25, 19, 0, 0) // May 25, 2026 at 07:00 PM
-
-const labels = {
+const defaultLabels = {
   days: 'ימים',
   hours: 'שעות',
   minutes: 'דקות',
@@ -18,9 +17,9 @@ function pad(n) {
   return String(n).padStart(2, '0')
 }
 
-function getTimeLeft() {
+function getTimeLeft(targetDate) {
   const now = new Date()
-  const diff = TARGET_DATE - now
+  const diff = targetDate - now
   if (diff <= 0) {
     return { days: 0, hours: 0, minutes: 0, seconds: 0, done: true }
   }
@@ -31,13 +30,14 @@ function getTimeLeft() {
   return { days, hours, minutes, seconds, done: false }
 }
 
-export default function Countdown({ embedded = false }) {
-  const [timeLeft, setTimeLeft] = useState(getTimeLeft)
+export default function Countdown({ targetDate, labels: customLabels, embedded = false }) {
+  const labels = { ...defaultLabels, ...customLabels }
+  const [timeLeft, setTimeLeft] = useState(() => getTimeLeft(targetDate))
 
   useEffect(() => {
-    const id = setInterval(() => setTimeLeft(getTimeLeft()), 1000)
+    const id = setInterval(() => setTimeLeft(getTimeLeft(targetDate)), 1000)
     return () => clearInterval(id)
-  }, [])
+  }, [targetDate])
 
   const Wrapper = embedded ? 'div' : 'section'
   const wrapperClass = embedded ? 'w-full max-w-2xl mx-auto border-0' : 'py-12 md:py-16 px-4 bg-cream'

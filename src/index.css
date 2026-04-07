@@ -185,3 +185,53 @@
     flex-direction: row !important;
   }
 }
+
+/* ══ Design 2 — fade-in animations ══ */
+
+@keyframes design2FadeText {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes design2FadeIllustration {
+  0% {
+    opacity: 0;
+    transform: scale(1.04);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes design2FadeSection {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.design2-fade-text {
+  opacity: 0;
+  animation: design2FadeText 1.4s cubic-bezier(0.22, 1, 0.36, 1) 1.2s forwards;
+}
+
+.design2-fade-illustration {
+  opacity: 0;
+  animation: design2FadeIllustration 1.8s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
+}
+
+.design2-fade-section {
+  opacity: 0;
+  animation: design2FadeSection 1s ease-out 1.6s forwards;
+}

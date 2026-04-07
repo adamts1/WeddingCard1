@@ -1,5 +1,4 @@
 /** @type {import('tailwindcss').Config} */
-import { tailwindColors } from './src/theme/colors.js'
 
 export default {
   content: [
@@ -9,7 +8,27 @@ export default {
   theme: {
     extend: {
       colors: {
-        ...tailwindColors,
+        cream: {
+          DEFAULT: 'var(--color-cream)',
+          light: 'var(--color-cream-light)',
+          dark: 'var(--color-cream-dark)',
+        },
+        blush: {
+          DEFAULT: 'var(--color-blush)',
+          light: 'var(--color-blush-light)',
+          dark: 'var(--color-blush-dark)',
+        },
+        magenta: {
+          DEFAULT: 'var(--color-magenta)',
+        },
+        green: {
+          DEFAULT: 'var(--color-green)',
+        },
+        olive: {
+          DEFAULT: 'var(--color-olive)',
+          light: 'var(--color-olive-light)',
+          muted: 'var(--color-olive-muted)',
+        },
       },
       fontFamily: {
         display: ['Amatic SC', 'Heebo', 'system-ui', 'sans-serif'],

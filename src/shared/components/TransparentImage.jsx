@@ -1,9 +1,5 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 
-/**
- * Cache processed data URLs so each source image is only
- * canvas-processed once, even when rendered multiple times.
- */
 const cache = new Map()
 
 function processImage(src, threshold) {
@@ -42,10 +38,6 @@ function processImage(src, threshold) {
   return promise
 }
 
-/**
- * Renders an image with its black background removed via canvas.
- * Results are cached so duplicate src values share one processing pass.
- */
 export default function TransparentImage({ src, className = '', style = {}, threshold = 60, ...rest }) {
   const [dataUrl, setDataUrl] = useState(null)
 
