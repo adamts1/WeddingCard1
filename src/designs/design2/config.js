@@ -43,7 +43,7 @@ export const config = {
 
   // ── Event details ──
   event: {
-    invitationText: 'שמחים ונרגשים לחגוג אתנו את היום המאושר בחיינו',
+    invitationText: 'בשמחה רבה ובהודיה אינסופית לה\' אנו שמחים להזמינכם לחגוג עמנו את נישואי ילדינו',
     dateText: '20.09.26',
     receptionText: 'קבלת פנים 19:30',
     ceremonyText: 'חופה וקידושין',

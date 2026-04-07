@@ -5,8 +5,6 @@
 
 import Hero from './components/Hero'
 import RSVP from '../../shared/components/RSVP'
-import SectionDivider from '../../shared/components/SectionDivider'
-import Countdown from '../../shared/components/Countdown'
 import config from './config'
 
 export default function Design2Page() {
@@ -30,49 +28,57 @@ export default function Design2Page() {
         />
 
         {/* Content overlaid on top of the image */}
-        <div className="absolute inset-0 z-10 flex flex-col justify-center px-5 py-8 md:px-10 md:py-16">
-          <div className="w-full max-w-2xl mx-auto">
-            {/* Invitation text */}
-            <p className="text-center font-sans text-sm md:text-xl lg:text-2xl text-olive leading-relaxed mb-6 md:mb-14 max-w-[70%] md:max-w-xl mx-auto">
-              {config.event.invitationText}
-            </p>
-
-            {/* Parents */}
-            <div className="flex flex-row justify-center items-start gap-6 md:gap-16 mb-8 md:mb-16">
+        <div className="absolute inset-0 z-10 flex flex-col justify-between px-5 py-8 md:px-10 md:py-16">
+          {/* Parents */}
+          <div className="flex flex-col items-center gap-2 md:gap-4">
+            <div className="flex flex-row justify-center items-start gap-6 md:gap-16">
               <div className="flex flex-col text-center">
-                <p className="text-[9px] md:text-xs tracking-widest text-olive-light mb-0.5 md:mb-2">{config.parents.bride.label}</p>
-                <p className="font-serif text-xs md:text-xl lg:text-2xl text-olive">{config.parents.bride.names}</p>
+                <p className="text-sm md:text-base tracking-widest text-olive-light mb-0.5 md:mb-2">{config.parents.bride.label}</p>
+                <p className="font-serif text-base md:text-3xl lg:text-4xl text-olive">{config.parents.bride.names}</p>
               </div>
               <div className="flex flex-col text-center">
-                <p className="text-[9px] md:text-xs tracking-widest text-olive-light mb-0.5 md:mb-2">{config.parents.groom.label}</p>
-                <p className="font-serif text-xs md:text-xl lg:text-2xl text-olive">{config.parents.groom.names}</p>
+                <p className="text-sm md:text-base tracking-widest text-olive-light mb-0.5 md:mb-2">{config.parents.groom.label}</p>
+                <p className="font-serif text-base md:text-3xl lg:text-4xl text-olive">{config.parents.groom.names}</p>
               </div>
             </div>
+          </div>
 
-            {/* Countdown */}
-            <div className="flex justify-center mb-6 md:mb-14">
-              <Countdown targetDate={config.targetDate} embedded />
-            </div>
+          {/* Invitation text */}
+          <p className="text-center font-sans text-lg md:text-3xl lg:text-4xl text-olive leading-relaxed max-w-[80%] md:max-w-xl mx-auto">
+            {config.event.invitationText}
+          </p>
 
-            {/* Reception */}
-            <p className="text-center font-sans text-base md:text-2xl lg:text-3xl text-olive mb-1">
-              {config.event.receptionText}
+          {/* Couple names */}
+          <p className="text-center font-display text-3xl md:text-5xl lg:text-6xl font-bold text-olive">
+            {config.couple.person1.name} ו{config.couple.person2.name}
+          </p>
+
+          {/* Date */}
+          <div className="text-center">
+            <p className="font-sans text-xl md:text-3xl lg:text-4xl text-olive">
+              {config.event.dateText}
             </p>
+            <p className="font-sans text-base md:text-2xl lg:text-3xl text-olive-light mt-1">
+              כ״ו באלול תשפ״ו
+            </p>
+          </div>
 
-            {/* Ceremony */}
-            <p className="text-center font-sans text-base md:text-2xl lg:text-3xl text-olive mt-4 md:mt-6 mb-0.5">
+          {/* Ceremony */}
+          <div className="text-center">
+            <p className="font-sans text-xl md:text-4xl lg:text-5xl text-olive">
               {config.event.ceremonyText}
             </p>
-            <p className="text-center font-display text-2xl md:text-4xl font-bold text-olive">
+            <p className="font-display text-3xl md:text-5xl font-bold text-olive mt-1">
               {config.event.ceremonyTime}
             </p>
+          </div>
 
-            {/* Venue + navigation */}
-            <p className="text-center font-sans text-sm md:text-xl lg:text-2xl text-olive mt-6 md:mt-10 mb-1">
+          {/* Venue + navigation */}
+          <div className="text-center">
+            <p className="font-sans text-lg md:text-3xl lg:text-4xl text-olive mb-1">
               {config.event.venueName}
             </p>
-
-            <div className="flex justify-center mt-2 md:mt-4">
+            <div className="flex justify-center mt-2">
               <a
                 href={config.event.wazeUrl}
                 target="_blank"
