@@ -34,7 +34,7 @@ export default {
         display: ['Amatic SC', 'Heebo', 'system-ui', 'sans-serif'],
         heading: ['Secular One', 'Heebo', 'system-ui', 'sans-serif'],
         serif: ['Frank Ruhl Libre', 'Georgia', 'serif'],
-        sans: ['Heebo', 'system-ui', 'sans-serif'],
+        sans: ['Noto Sans Hebrew', 'Heebo', 'system-ui', 'sans-serif'],
       },
       animation: {
         'fade-in': 'fadeIn 1s ease-out forwards',

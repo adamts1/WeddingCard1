@@ -22,8 +22,8 @@ export const config = {
   palette: {
     cream: { DEFAULT: '#FAFAF8', light: '#FFFFFF', dark: '#F0F0EC' },
     blush: { DEFAULT: '#C5B9A8', light: '#DDD5C9', dark: '#A89B8A' },
-    magenta: { DEFAULT: '#6B7B4C' },
-    green: { DEFAULT: '#6B7B4C', light: '#8A9B6A', dark: '#4F5C38' },
+    magenta: { DEFAULT: '#A78BCF' },
+    green: { DEFAULT: '#A78BCF', light: '#C4AEDF', dark: '#8A6BB5' },
     olive: { DEFAULT: '#5C5C42', light: '#7A7A5E', muted: '#6E6E52' },
   },
 
@@ -36,7 +36,7 @@ export const config = {
   // ── Couple ──
   couple: {
     person1: { name: 'דנה', color: '#5C5C42' },
-    person2: { name: 'אופיר', color: '#6B7B4C' },
+    person2: { name: 'אופיר', color: '#A78BCF' },
   },
 
   // ── Parents ──
@@ -47,7 +47,7 @@ export const config = {
 
   // ── Event details ──
   event: {
-    invitationText: 'בשמחה רבה ובהודיה אינסופית לה\' אנו שמחים להזמינכם לחגוג עמנו את נישואי ילדינו',
+    invitationText: 'בשמחה רבה ובהודיה אינסופית לה\' אנו שמחים להזמינכם לחגוג עמנו   ',
     dateText: '20.09.26',
     receptionText: 'קבלת פנים 19:30',
     ceremonyText: 'חופה וקידושין',
@@ -64,10 +64,10 @@ export const config = {
 
   // ── RSVP config ──
   rsvp: {
-    titleColor: '#6B7B4C',
-    submitButtonColor: '#6B7B4C',
-    submitButtonHoverColor: '#8A9B6A',
-    celebrationColors: ['#C5B9A8', '#6B7B4C', '#8A9B6A', '#DDD5C9', '#A89B8A', '#5C5C42', '#D4C9B8', '#7A8B5C'],
+    titleColor: '#A78BCF',
+    submitButtonColor: '#A78BCF',
+    submitButtonHoverColor: '#C4AEDF',
+    celebrationColors: ['#C5B9A8', '#A78BCF', '#C4AEDF', '#DDD5C9', '#A89B8A', '#5C5C42', '#D4C9B8', '#8A6BB5'],
     sectionBg: 'bg-transparent',
     lang: 'he',
   },
