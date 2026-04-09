@@ -3,6 +3,7 @@
  * Elegant minimalist design with staggered fade-in text.
  */
 
+import { motion } from 'framer-motion'
 import Hero from './components/Hero'
 import RSVP from '../../shared/components/RSVP'
 import config from './config'
@@ -17,18 +18,27 @@ export default function Design2Page() {
     >
       <Hero images={config.images} />
 
-      {/* Details section with section2.png background */}
-      <section className="relative w-full md:max-w-2xl lg:max-w-3xl md:mx-auto text-olive">
-        {/* Background image — inline so it sets the height naturally on mobile */}
-        <img
-          src={config.images.section2Img}
-          alt=""
-          className="w-full h-auto block"
-          aria-hidden="true"
+      <section className="relative w-full md:max-w-2xl lg:max-w-3xl md:mx-auto text-olive overflow-hidden">
+        {/* Decorative lavender sprigs with gentle breeze */}
+        <motion.img
+          src={config.images.lavender[0]}
+          alt="" aria-hidden="true"
+          className="pointer-events-none absolute top-0 left-0 w-16 md:w-24 opacity-70 -translate-x-2 -translate-y-2"
+          style={{ originX: 0.5, originY: 0 }}
+          animate={{ rotate: [-20, -14, -22, -16, -20] }}
+          transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+        />
+        <motion.img
+          src={config.images.lavender[1]}
+          alt="" aria-hidden="true"
+          className="pointer-events-none absolute top-0 right-0 w-16 md:w-24 opacity-70 translate-x-2 -translate-y-2"
+          style={{ originX: 0.5, originY: 0, scaleX: -1 }}
+          animate={{ rotate: [20, 14, 23, 17, 20] }}
+          transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
         />
 
-        {/* Content overlaid on top of the image */}
-        <div className="absolute inset-0 z-10 flex flex-col justify-between px-5 py-8 md:px-10 md:py-16">
+
+        <div className="relative z-10 flex flex-col justify-between px-5 py-8 md:px-10 md:py-16">
           {/* Parents */}
           <div className="flex flex-col items-center gap-2 md:gap-4">
             <div className="flex flex-row justify-center items-start gap-6 md:gap-16">
@@ -92,6 +102,87 @@ export default function Design2Page() {
               </a>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Blessing section */}
+      <section className="relative w-full md:max-w-2xl lg:max-w-3xl md:mx-auto text-olive overflow-hidden py-12 md:py-20">
+        {/* Left lavender column */}
+        <div className="pointer-events-none absolute top-0 left-0 bottom-0 w-20 md:w-32 flex flex-col justify-between items-start">
+          <motion.img
+            src={config.images.lavender[0]}
+            alt="" aria-hidden="true"
+            className="w-14 md:w-24 opacity-60"
+            style={{ originX: 0.5, originY: 0 }}
+            animate={{ rotate: [-15, -8, -18, -10, -15] }}
+            transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
+          />
+          <motion.img
+            src={config.images.lavender[3]}
+            alt="" aria-hidden="true"
+            className="w-12 md:w-20 opacity-50 ml-2"
+            style={{ originX: 0.5, originY: 1 }}
+            animate={{ rotate: [-5, 3, -7, 2, -5] }}
+            transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }}
+          />
+          <motion.img
+            src={config.images.lavender[2]}
+            alt="" aria-hidden="true"
+            className="w-14 md:w-24 opacity-60"
+            style={{ originX: 0.5, originY: 1 }}
+            animate={{ rotate: [-10, -4, -14, -6, -10] }}
+            transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+          />
+        </div>
+
+        {/* Right lavender column */}
+        <div className="pointer-events-none absolute top-0 right-0 bottom-0 w-20 md:w-32 flex flex-col justify-between items-end">
+          <motion.img
+            src={config.images.lavender[1]}
+            alt="" aria-hidden="true"
+            className="w-14 md:w-24 opacity-60"
+            style={{ originX: 0.5, originY: 0, scaleX: -1 }}
+            animate={{ rotate: [15, 8, 18, 10, 15] }}
+            transition={{ duration: 8.5, repeat: Infinity, ease: 'easeInOut' }}
+          />
+          <motion.img
+            src={config.images.lavender[4]}
+            alt="" aria-hidden="true"
+            className="w-12 md:w-20 opacity-50 mr-2"
+            style={{ originX: 0.5, originY: 1, scaleX: -1 }}
+            animate={{ rotate: [5, -3, 7, -2, 5] }}
+            transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+          />
+          <motion.img
+            src={config.images.lavender[2]}
+            alt="" aria-hidden="true"
+            className="w-14 md:w-24 opacity-60"
+            style={{ originX: 0.5, originY: 1, scaleX: -1 }}
+            animate={{ rotate: [10, 4, 14, 6, 10] }}
+            transition={{ duration: 7.5, repeat: Infinity, ease: 'easeInOut' }}
+          />
+        </div>
+
+        {/* Text content */}
+        <div className="relative z-10 flex flex-col items-center gap-10 md:gap-16 px-16 md:px-28">
+          <p className="text-center font-serif text-lg md:text-2xl lg:text-3xl text-olive leading-loose tracking-wide">
+            בשמחה רבה ובהודיה אינסופית לה׳
+            <br />
+            אנו שמחים להזמינכם לחגוג עמנו
+            <br />
+            את נישואי ילדינו
+          </p>
+
+          <div className="w-16 md:w-24 h-px bg-blush" />
+
+          <p className="text-center font-serif text-base md:text-xl lg:text-2xl text-olive-light leading-loose italic">
+            ״יהי שלום בחילך
+            <br />
+            שלווה בארמנותייך״
+          </p>
+          <p className="text-center font-sans text-sm md:text-base text-olive-muted tracking-widest">
+            (תהילים קכ״ב, ז׳)
+          </p>
         </div>
       </section>
 
