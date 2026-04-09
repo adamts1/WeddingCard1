@@ -6,12 +6,14 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
 import Design1Page from './designs/design1'
 import Design2Page from './designs/design2'
+import Design3Page from './designs/design3'
 
 export default function App() {
   return (
     <Routes>
       <Route path="/design1" element={<Design1Page />} />
       <Route path="/design2" element={<Design2Page />} />
+      <Route path="/design3" element={<Design3Page />} />
       <Route path="*" element={<Navigate to="/design1" replace />} />
     </Routes>
   )

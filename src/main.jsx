@@ -6,10 +6,12 @@ import App from './App.jsx'
 
 import { config as design1Config } from './designs/design1/config'
 import { config as design2Config } from './designs/design2/config'
+import { config as design3Config } from './designs/design3/config'
 
 const designs = {
   '/design1': design1Config,
   '/design2': design2Config,
+  '/design3': design3Config,
 }
 
 function applyPalette(palette) {
