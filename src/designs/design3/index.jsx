@@ -57,7 +57,7 @@ export default function Design3Page() {
                 alt="Save the Date – ציפורה ורונן"
                 className="w-full h-full object-cover"
               />
-              <div className="absolute z-10 left-1/2 -translate-x-1/2 top-[34%]">
+              <div className="absolute z-10 left-1/2 -translate-x-1/2 top-[36%]">
                 <motion.button
                   onClick={() => handleNavigate('huppa')}
                   className="px-8 py-3 border-2 border-gray-800 text-gray-800 font-serif text-xl tracking-[0.3em] hover:bg-gray-800 hover:text-white transition-all duration-300"
@@ -132,7 +132,7 @@ export default function Design3Page() {
             viewport={{ once: true }}
             transition={{ duration: 3, ease: 'easeOut' }}
           />
-          <div className="relative flex flex-col items-center justify-start gap-6 md:gap-12 px-8 md:px-16 mt-[16em] md:max-w-2xl lg:max-w-3xl md:mx-auto">
+          <div className="relative flex flex-col items-center justify-start gap-6 md:gap-12 px-8 md:px-16 mt-[10rem] md:max-w-2xl lg:max-w-3xl md:mx-auto">
             {/* Blessing text */}
             <motion.p
               className="text-center font-serif font-bold text-gray-800 leading-loose tracking-wide"
@@ -189,7 +189,7 @@ export default function Design3Page() {
             src={config.images.jerusalemImg}
             alt="ירושלים"
             className="absolute left-0 w-full h-auto block pointer-events-none"
-            style={{ bottom: '-107px' }}
+            style={{ bottom: '0' }}
           />
         </section>
 
