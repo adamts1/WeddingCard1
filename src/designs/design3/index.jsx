@@ -136,7 +136,7 @@ export default function Design3Page() {
             {/* Blessing text */}
             <motion.p
               className="text-center font-serif font-bold text-gray-800 leading-loose tracking-wide"
-              style={{ fontSize: '1.4rem' }}
+              style={{ fontSize: '1.1rem' }}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
@@ -163,7 +163,7 @@ export default function Design3Page() {
             {/* Biblical verse */}
             <motion.p
               className="text-center font-serif font-semibold text-gray-600 leading-loose italic"
-              style={{ fontSize: '1.3rem' }}
+              style={{ fontSize: '1rem' }}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
