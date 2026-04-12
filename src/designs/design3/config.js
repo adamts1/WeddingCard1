@@ -3,6 +3,7 @@
  */
 
 import heroImg from '../../../assets/design3/main.png'
+import main2Img from '../../../assets/design3/nain2.png'
 import jerusalemImg from '../../../assets/design3/second.png'
 
 export const config = {
@@ -25,7 +26,7 @@ export const config = {
   targetDate: new Date(2026, 3, 30, 19, 0, 0), // April 30, 2026 at 7:00 PM
 
   // ── Images ──
-  images: { heroImg, jerusalemImg },
+  images: { heroImg, main2Img, jerusalemImg },
 
   // ── Couple ──
   couple: {
