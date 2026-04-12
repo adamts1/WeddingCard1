@@ -46,24 +46,32 @@ export default function Design3Page() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <div
-              className="relative w-full h-full cursor-pointer"
-              onClick={handleOpen}
-            >
+            <div className="relative w-full h-full">
               <img
                 src={config.images.heroImg}
                 alt="Save the Date – ציפורה ורונן"
                 className="w-full h-full object-cover"
               />
-              {/* Pulsing hint below the logo */}
-              <motion.p
-                className="absolute left-1/2 -translate-x-1/2 top-[34%] text-gray-400 font-serif text-sm tracking-[0.3em]"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: [0, 1, 0] }}
-                transition={{ delay: 1, duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-              >
-               פתיחת הזמנה
-              </motion.p>
+              <div className="absolute z-10 left-1/2 -translate-x-1/2 top-[34%] flex flex-row gap-6">
+                <motion.button
+                  onClick={() => handleNavigate('huppa')}
+                  className="px-8 py-3 border-2 border-gray-800 text-gray-800 font-serif text-xl tracking-[0.3em] hover:bg-gray-800 hover:text-white transition-all duration-300"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3, duration: 0.5 }}
+                >
+                  חופה
+                </motion.button>
+                <motion.button
+                  onClick={() => handleNavigate('rsvp')}
+                  className="px-8 py-3 border-2 border-gray-800 text-gray-800 font-serif text-xl tracking-[0.3em] hover:bg-gray-800 hover:text-white transition-all duration-300"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5, duration: 0.5 }}
+                >
+                  RSVP
+                </motion.button>
+              </div>
             </div>
           </motion.div>
         )}
@@ -117,8 +125,8 @@ export default function Design3Page() {
         className={step === 'content' ? '' : 'pointer-events-none fixed inset-0 -z-10'}
       >
         {/* Section 2 – Blessing text + Jerusalem illustration below */}
-        <section id="huppa" className="relative w-full bg-white min-h-screen flex flex-col">
-          <div className="flex-1 flex flex-col items-center justify-center gap-6 md:gap-12 px-8 md:px-16 py-12 md:py-20 md:max-w-2xl lg:max-w-3xl md:mx-auto">
+        <section id="huppa" className="relative w-full bg-white h-screen flex flex-col overflow-hidden">
+          <div className="flex flex-col items-center justify-start gap-6 md:gap-12 px-8 md:px-16 pt-24 md:pt-32 md:max-w-2xl lg:max-w-3xl md:mx-auto">
             {/* Blessing text */}
             <motion.p
               className="text-center font-serif text-xl md:text-3xl lg:text-4xl font-bold text-gray-800 leading-loose tracking-wide"
@@ -172,7 +180,7 @@ export default function Design3Page() {
           <img
             src={config.images.jerusalemImg}
             alt="ירושלים"
-            className="w-full h-auto block"
+            className="absolute bottom-0 left-0 w-full h-auto block pointer-events-none"
           />
         </section>
 
