@@ -6,7 +6,14 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import RSVP from '../../shared/components/RSVP'
+import Countdown from '../../shared/components/Countdown'
 import config from './config'
+
+const hebrewDate = new Intl.DateTimeFormat('he-u-ca-hebrew', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+}).format(config.targetDate)
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -19,8 +26,6 @@ const fadeUp = {
 
 export default function Design3Page() {
   const [step, setStep] = useState('cover') // 'cover' | 'menu' | 'content'
-
-  const handleOpen = () => setStep('menu')
 
   const handleNavigate = (target) => {
     setStep('content')
@@ -52,24 +57,15 @@ export default function Design3Page() {
                 alt="Save the Date – ציפורה ורונן"
                 className="w-full h-full object-cover"
               />
-              <div className="absolute z-10 left-1/2 -translate-x-1/2 top-[34%] flex flex-row gap-6">
+              <div className="absolute z-10 left-1/2 -translate-x-1/2 top-[34%]">
                 <motion.button
                   onClick={() => handleNavigate('huppa')}
                   className="px-8 py-3 border-2 border-gray-800 text-gray-800 font-serif text-xl tracking-[0.3em] hover:bg-gray-800 hover:text-white transition-all duration-300"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
                   transition={{ delay: 0.3, duration: 0.5 }}
                 >
-                  חופה
-                </motion.button>
-                <motion.button
-                  onClick={() => handleNavigate('rsvp')}
-                  className="px-8 py-3 border-2 border-gray-800 text-gray-800 font-serif text-xl tracking-[0.3em] hover:bg-gray-800 hover:text-white transition-all duration-300"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5, duration: 0.5 }}
-                >
-                  RSVP
+                  פתיחה
                 </motion.button>
               </div>
             </div>
@@ -88,7 +84,7 @@ export default function Design3Page() {
           >
             <div className="relative w-full h-full">
               <img
-                src={config.images.main2Img}
+                src={config.images.topImg}
                 alt="ציפורה ורונן"
                 className="w-full h-full object-cover absolute inset-0"
               />
@@ -126,10 +122,21 @@ export default function Design3Page() {
       >
         {/* Section 2 – Blessing text + Jerusalem illustration below */}
         <section id="huppa" className="relative w-full bg-white h-screen flex flex-col overflow-hidden">
-          <div className="flex flex-col items-center justify-start gap-6 md:gap-12 px-8 md:px-16 pt-24 md:pt-32 md:max-w-2xl lg:max-w-3xl md:mx-auto">
+          <motion.img
+            src={config.images.topImg}
+            alt=""
+            aria-hidden="true"
+            className="absolute top-0 left-0 w-full h-auto block pointer-events-none"
+            initial={{ y: '-100%', opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 3, ease: 'easeOut' }}
+          />
+          <div className="relative flex flex-col items-center justify-start gap-6 md:gap-12 px-8 md:px-16 mt-[16em] md:max-w-2xl lg:max-w-3xl md:mx-auto">
             {/* Blessing text */}
             <motion.p
-              className="text-center font-serif text-xl md:text-3xl lg:text-4xl font-bold text-gray-800 leading-loose tracking-wide"
+              className="text-center font-serif font-bold text-gray-800 leading-loose tracking-wide"
+              style={{ fontSize: '1.4rem' }}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
@@ -155,7 +162,8 @@ export default function Design3Page() {
 
             {/* Biblical verse */}
             <motion.p
-              className="text-center font-serif text-lg md:text-2xl lg:text-3xl font-semibold text-gray-600 leading-loose italic"
+              className="text-center font-serif font-semibold text-gray-600 leading-loose italic"
+              style={{ fontSize: '1.3rem' }}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
@@ -180,13 +188,14 @@ export default function Design3Page() {
           <img
             src={config.images.jerusalemImg}
             alt="ירושלים"
-            className="absolute bottom-0 left-0 w-full h-auto block pointer-events-none"
+            className="absolute left-0 w-full h-auto block pointer-events-none"
+            style={{ bottom: '-107px' }}
           />
         </section>
 
         {/* Section 3 – Parents, date, venue */}
-        <section className="relative w-full bg-white py-16 md:py-24">
-          <div className="flex flex-col items-center gap-10 md:gap-14 px-8 md:px-16 md:max-w-2xl lg:max-w-3xl md:mx-auto">
+        <section className="relative w-full bg-white h-screen flex items-start justify-center pt-12 md:pt-16 pb-16 md:pb-24 overflow-hidden">
+          <div className="relative flex flex-col items-center justify-center gap-10 md:gap-14 px-8 md:px-16 md:max-w-2xl lg:max-w-3xl md:mx-auto">
             {/* Parents */}
             <motion.div
               className="flex flex-row justify-center items-start gap-8 md:gap-16"
@@ -239,6 +248,20 @@ export default function Design3Page() {
               <p className="font-sans text-2xl md:text-4xl lg:text-5xl text-gray-800 tracking-widest">
                 {config.event.dateText}
               </p>
+              <p className="font-serif text-base md:text-xl text-gray-500 mt-2">
+                {hebrewDate}
+              </p>
+            </motion.div>
+
+            <motion.div
+              className="w-full"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              custom={3}
+              variants={fadeUp}
+            >
+              <Countdown targetDate={config.targetDate} embedded />
             </motion.div>
 
             {/* Ceremony */}
