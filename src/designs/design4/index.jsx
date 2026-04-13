@@ -1,9 +1,8 @@
 /**
- * Design 3 – ציפורה ורונן – Save the Date
- * Two-step cover → main content flow.
+ * Design 4 – ציפורה ורונן – video hero variant
  */
 
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import RSVP from '../../shared/components/RSVP'
 import Countdown from '../../shared/components/Countdown'
@@ -24,11 +23,15 @@ const fadeUp = {
   }),
 }
 
-export default function Design3Page() {
-  const [step, setStep] = useState('cover') // 'cover' | 'menu' | 'content'
+export default function Design4Page() {
+  const [step, setStep] = useState('cover')
+  const secVideoRef = useRef(null)
 
   const handleNavigate = (target) => {
     setStep('content')
+    if (secVideoRef.current) {
+      secVideoRef.current.play().catch(() => {})
+    }
     setTimeout(() => {
       const el = document.getElementById(target)
       if (el) el.scrollIntoView({ behavior: 'smooth' })
@@ -37,33 +40,34 @@ export default function Design3Page() {
 
   return (
     <div
-      className="min-h-screen-dvh md:min-h-screen bg-white"
+      className="min-h-screen-dvh md:min-h-screen bg-black"
       dir={config.dir}
       lang={config.lang}
     >
       <AnimatePresence mode="wait">
-        {/* Step 1 – Cover: main.png + "פתיחה" button */}
         {step === 'cover' && (
           <motion.div
             key="cover"
-            className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-white"
+            className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black"
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.6 }}
           >
             <div className="relative w-full h-full">
-              <img
-                src={config.images.heroImg}
-                alt="Save the Date – ציפורה ורונן"
-                className="w-full h-full object-cover"
+              <video
+                src={config.videos.heroVideo}
+                autoPlay
+                muted
+                playsInline
+                className="absolute inset-0 w-full h-full object-cover"
               />
-              <div className="absolute z-10 left-1/2 -translate-x-1/2 top-[36%]">
+              <div className="absolute z-10 left-1/2 -translate-x-1/2" style={{ bottom: '500px' }}>
                 <motion.button
                   onClick={() => handleNavigate('huppa')}
-                  className="px-8 py-3 border-2 border-gray-800 text-gray-800 font-serif text-xl tracking-[0.3em] hover:bg-gray-800 hover:text-white transition-all duration-300"
+                  className="px-8 py-3 border-2 border-white text-white font-serif text-xl tracking-[0.3em] hover:bg-white hover:text-gray-900 transition-all duration-300 backdrop-blur-sm bg-black/20"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  transition={{ delay: 0.3, duration: 0.5 }}
+                  transition={{ delay: 0.6, duration: 0.6 }}
                 >
                   פתיחה
                 </motion.button>
@@ -71,71 +75,26 @@ export default function Design3Page() {
             </div>
           </motion.div>
         )}
-
-        {/* Step 2 – Menu: main2.png + two navigation buttons */}
-        {step === 'menu' && (
-          <motion.div
-            key="menu"
-            className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-white"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="relative w-full h-full">
-              <img
-                src={config.images.topImg}
-                alt="ציפורה ורונן"
-                className="w-full h-full object-cover absolute inset-0"
-              />
-              <div className="absolute z-10 left-1/2 -translate-x-1/2 top-[30%] flex flex-row gap-6">
-                <motion.button
-                  onClick={() => handleNavigate('huppa')}
-                  className="px-8 py-3 border-2 border-gray-800 text-gray-800 font-serif text-xl tracking-[0.3em] hover:bg-gray-800 hover:text-white transition-all duration-300"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3, duration: 0.5 }}
-                >
-                  חופה
-                </motion.button>
-                <motion.button
-                  onClick={() => handleNavigate('rsvp')}
-                  className="px-8 py-3 border-2 border-gray-800 text-gray-800 font-serif text-xl tracking-[0.3em] hover:bg-gray-800 hover:text-white transition-all duration-300"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5, duration: 0.5 }}
-                >
-                  RSVP
-                </motion.button>
-              </div>
-            </div>
-          </motion.div>
-        )}
       </AnimatePresence>
 
-      {/* Main content – always rendered, visible after covers dismiss */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: step === 'content' ? 1 : 0 }}
         transition={{ duration: 0.6 }}
-        className={step === 'content' ? '' : 'pointer-events-none fixed inset-0 -z-10'}
+        className={step === 'content' ? 'bg-white' : 'pointer-events-none fixed inset-0 -z-10'}
       >
-        {/* Section 2 – Blessing text + Jerusalem illustration below */}
-        <section id="huppa" className="relative w-full bg-white h-screen flex flex-col overflow-hidden">
-          <motion.img
-            src={config.images.topImg}
-            alt=""
-            aria-hidden="true"
-            className="absolute top-0 left-0 w-full h-auto block pointer-events-none"
-            initial={{ y: '-100%', opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 3, ease: 'easeOut' }}
+        <section id="huppa" className="relative w-full h-screen flex flex-col overflow-hidden">
+          <video
+            ref={secVideoRef}
+            src={config.videos.secVideo}
+            muted
+            playsInline
+            preload="auto"
+            className="absolute inset-0 w-full h-full object-cover"
           />
-          <div className="relative flex flex-col items-center justify-start gap-6 md:gap-12 px-8 md:px-16 mt-[10rem] md:max-w-2xl lg:max-w-3xl md:mx-auto">
-            {/* Blessing text */}
+          <div className="relative z-10 flex flex-col items-center justify-start gap-6 md:gap-12 px-8 md:px-16 mt-[10rem] md:max-w-2xl lg:max-w-3xl md:mx-auto">
             <motion.p
-              className="text-center font-bold text-gray-800 leading-loose tracking-wide"
+              className="text-center font-bold text-black leading-loose tracking-wide"
               style={{ fontSize: '1.1rem', fontFamily: "'Playpen Sans Hebrew', sans-serif" }}
               initial="hidden"
               whileInView="visible"
@@ -160,9 +119,8 @@ export default function Design3Page() {
               variants={fadeUp}
             />
 
-            {/* Biblical verse */}
             <motion.p
-              className="text-center text-gray-700 leading-loose"
+              className="text-center text-black leading-loose"
               style={{ fontSize: '1.1rem', fontFamily: "'Suez One', serif" }}
               initial="hidden"
               whileInView="visible"
@@ -173,7 +131,7 @@ export default function Design3Page() {
               {config.event.verse}
             </motion.p>
             <motion.p
-              className="text-center text-base md:text-lg font-medium text-gray-400 tracking-widest"
+              className="text-center text-base md:text-lg font-medium text-black tracking-widest"
               style={{ fontFamily: "'Playpen Sans Hebrew', sans-serif" }}
               initial="hidden"
               whileInView="visible"
@@ -185,19 +143,16 @@ export default function Design3Page() {
             </motion.p>
           </div>
 
-          {/* Jerusalem illustration image */}
-          <img
-            src={config.images.jerusalemImg}
-            alt="ירושלים"
-            className="absolute left-0 w-full h-auto block pointer-events-none"
-            style={{ bottom: '0' }}
-          />
         </section>
 
-        {/* Section 3 – Parents, date, venue */}
-        <section className="relative w-full bg-white h-screen flex items-start justify-center pt-12 md:pt-16 pb-16 md:pb-24 overflow-hidden">
-          <div className="relative flex flex-col items-center justify-center gap-10 md:gap-14 px-8 md:px-16 md:max-w-2xl lg:max-w-3xl md:mx-auto">
-            {/* Parents */}
+        <section className="relative w-full min-h-screen flex items-start justify-center pt-[9rem] md:pt-[9rem] pb-16 md:pb-24 overflow-hidden">
+          <img
+            src={config.images.detailsImg}
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+          />
+          <div className="relative z-10 flex flex-col items-center justify-center gap-10 md:gap-14 px-8 md:px-16 md:max-w-2xl lg:max-w-3xl md:mx-auto">
             <motion.div
               className="flex flex-row justify-center items-start gap-8 md:gap-16"
               initial="hidden"
@@ -207,12 +162,12 @@ export default function Design3Page() {
               variants={fadeUp}
             >
               <div className="flex flex-col text-center">
-                <p className="text-sm md:text-base tracking-widest text-gray-400 mb-1 md:mb-2">{config.parents.bride.label}</p>
-                <p className="font-serif text-base md:text-2xl lg:text-3xl text-gray-800">{config.parents.bride.names}</p>
+                <p className="text-sm md:text-base tracking-widest font-semibold text-gray-700 mb-1 md:mb-2">{config.parents.bride.label}</p>
+                <p className="font-serif font-bold text-base md:text-2xl lg:text-3xl text-gray-900">{config.parents.bride.names}</p>
               </div>
               <div className="flex flex-col text-center">
-                <p className="text-sm md:text-base tracking-widest text-gray-400 mb-1 md:mb-2">{config.parents.groom.label}</p>
-                <p className="font-serif text-base md:text-2xl lg:text-3xl text-gray-800">{config.parents.groom.names}</p>
+                <p className="text-sm md:text-base tracking-widest font-semibold text-gray-700 mb-1 md:mb-2">{config.parents.groom.label}</p>
+                <p className="font-serif font-bold text-base md:text-2xl lg:text-3xl text-gray-900">{config.parents.groom.names}</p>
               </div>
             </motion.div>
 
@@ -225,9 +180,8 @@ export default function Design3Page() {
               variants={fadeUp}
             />
 
-            {/* Couple names */}
             <motion.p
-              className="text-center font-display text-4xl md:text-6xl lg:text-7xl font-bold text-gray-800"
+              className="text-center font-display text-4xl md:text-6xl lg:text-7xl font-black text-gray-900"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
@@ -237,7 +191,6 @@ export default function Design3Page() {
               {config.couple.person1.name} ו{config.couple.person2.name}
             </motion.p>
 
-            {/* Date */}
             <motion.div
               className="text-center"
               initial="hidden"
@@ -246,10 +199,10 @@ export default function Design3Page() {
               custom={3}
               variants={fadeUp}
             >
-              <p className="font-sans text-2xl md:text-4xl lg:text-5xl text-gray-800 tracking-widest">
+              <p className="font-sans font-black text-2xl md:text-4xl lg:text-5xl text-gray-900 tracking-widest">
                 {config.event.dateText}
               </p>
-              <p className="font-serif text-base md:text-xl text-gray-500 mt-2">
+              <p className="font-serif font-semibold text-base md:text-xl text-gray-700 mt-2">
                 {hebrewDate}
               </p>
             </motion.div>
@@ -265,7 +218,6 @@ export default function Design3Page() {
               <Countdown targetDate={config.targetDate} embedded />
             </motion.div>
 
-            {/* Ceremony */}
             <motion.div
               className="text-center"
               initial="hidden"
@@ -274,13 +226,13 @@ export default function Design3Page() {
               custom={4}
               variants={fadeUp}
             >
-              <p className="font-sans text-lg md:text-2xl text-gray-600">
+              <p className="font-sans font-semibold text-lg md:text-2xl text-gray-800">
                 {config.event.receptionText}
               </p>
-              <p className="font-sans text-xl md:text-3xl text-gray-800 mt-2">
+              <p className="font-sans font-bold text-xl md:text-3xl text-gray-900 mt-2">
                 {config.event.ceremonyText}
               </p>
-              <p className="font-display text-3xl md:text-5xl font-bold text-gray-800 mt-1">
+              <p className="font-display text-3xl md:text-5xl font-black text-gray-900 mt-1">
                 {config.event.ceremonyTime}
               </p>
             </motion.div>
@@ -294,7 +246,6 @@ export default function Design3Page() {
               variants={fadeUp}
             />
 
-            {/* Venue + navigation */}
             <motion.div
               className="text-center"
               initial="hidden"
@@ -303,10 +254,10 @@ export default function Design3Page() {
               custom={5}
               variants={fadeUp}
             >
-              <p className="font-serif text-2xl md:text-4xl text-gray-800 mb-1">
+              <p className="font-serif font-black text-2xl md:text-4xl text-gray-900 mb-1">
                 {config.event.venueName}
               </p>
-              <p className="font-sans text-lg md:text-2xl text-gray-500">
+              <p className="font-sans font-semibold text-lg md:text-2xl text-gray-700">
                 {config.event.venueCity}
               </p>
               <div className="flex justify-center mt-4">
