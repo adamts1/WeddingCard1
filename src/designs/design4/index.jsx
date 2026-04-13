@@ -61,7 +61,7 @@ export default function Design4Page() {
                 playsInline
                 className="absolute inset-0 w-full h-full object-cover"
               />
-              <div className="absolute z-10 left-1/2 -translate-x-1/2" style={{ bottom: '500px' }}>
+              <div className="absolute z-10 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
                 <motion.button
                   onClick={() => handleNavigate('huppa')}
                   className="px-8 py-3 border-2 border-white text-white font-serif text-xl tracking-[0.3em] hover:bg-white hover:text-gray-900 transition-all duration-300 backdrop-blur-sm bg-black/20"
@@ -86,7 +86,7 @@ export default function Design4Page() {
         <section id="huppa" className="relative w-full h-screen flex flex-col overflow-hidden">
           <video
             ref={secVideoRef}
-            src={config.videos.secVideo}
+            src={config.videos.oneVideo}
             muted
             playsInline
             preload="auto"
@@ -277,15 +277,22 @@ export default function Design4Page() {
           </div>
         </section>
 
-        <div id="rsvp">
-          <RSVP config={{ ...config.rsvp, contacts: config.contacts }} />
+        <div id="rsvp" className="relative overflow-hidden">
+          <img
+            src={config.images.footerImg}
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+          />
+          <div className="relative z-10">
+            <RSVP config={{ ...config.rsvp, contacts: config.contacts }} />
+            <footer className="py-4 bg-transparent">
+              <p className="text-center text-[10px] font-bold text-gray-700">
+                &copy; TSITYAT - AI Agency
+              </p>
+            </footer>
+          </div>
         </div>
-
-        <footer className="py-4 bg-white">
-          <p className="text-center text-[10px] font-bold text-gray-400">
-            &copy; TSITYAT - AI Agency
-          </p>
-        </footer>
       </motion.div>
     </div>
   )

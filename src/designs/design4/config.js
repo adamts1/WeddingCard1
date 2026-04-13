@@ -3,8 +3,9 @@
  */
 
 import heroVideo from '../../../assets/design4/main.mp4'
-import secVideo from '../../../assets/design4/sec.mp4'
-import detailsImg from '../../../assets/design4/third.jpg'
+import oneVideo from '../../../assets/design4/one.mp4'
+import detailsImg from '../../../assets/design4/two.png'
+import footerImg from '../../../assets/design4/footer.png'
 import jerusalemImg from '../../../assets/design3/second.png'
 import topImg from '../../../assets/design3/top.png'
 
@@ -24,8 +25,8 @@ export const config = {
 
   targetDate: new Date(2026, 3, 30, 19, 0, 0),
 
-  videos: { heroVideo, secVideo },
-  images: { jerusalemImg, topImg, detailsImg },
+  videos: { heroVideo, oneVideo },
+  images: { jerusalemImg, topImg, detailsImg, footerImg },
 
   couple: {
     person1: { name: 'ציפורה', color: '#2C2C2C' },
