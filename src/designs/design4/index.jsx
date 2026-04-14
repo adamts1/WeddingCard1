@@ -26,8 +26,11 @@ const fadeUp = {
 export default function Design4Page() {
   const [step, setStep] = useState('cover')
   const secVideoRef = useRef(null)
+  const navigatingRef = useRef(false)
 
   const handleNavigate = (target) => {
+    if (navigatingRef.current) return
+    navigatingRef.current = true
     setStep('content')
     if (secVideoRef.current) {
       secVideoRef.current.play().catch(() => {})
@@ -63,11 +66,12 @@ export default function Design4Page() {
               />
               <div className="absolute z-10 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
                 <motion.button
+                  type="button"
                   onClick={() => handleNavigate('huppa')}
-                  className="px-8 py-3 border-2 border-white text-white font-serif text-xl tracking-[0.3em] hover:bg-white hover:text-gray-900 transition-all duration-300 backdrop-blur-sm bg-black/20"
-                  initial={{ opacity: 0 }}
+                  onTouchEnd={(e) => { e.preventDefault(); handleNavigate('huppa') }}
+                  className="px-8 py-3 border-2 border-white text-white font-serif text-xl tracking-[0.3em] hover:bg-white hover:text-gray-900 transition-colors duration-300 backdrop-blur-sm bg-black/20 cursor-pointer"
+                  initial={{ opacity: 1 }}
                   animate={{ opacity: 1 }}
-                  transition={{ delay: 0.6, duration: 0.6 }}
                 >
                   פתיחה
                 </motion.button>
