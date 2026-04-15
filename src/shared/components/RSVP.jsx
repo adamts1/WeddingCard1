@@ -394,10 +394,11 @@ export default function RSVP({ config = {} }) {
                 onClick={() => setGuestCount(-1)}
                 aria-label={t.ariaMinus}
                 className="w-10 h-10 flex items-center justify-center text-olive hover:bg-blush-light/30 transition-colors"
+
               >
-                <span className="text-lg leading-none">−</span>
+                <span   style={{ color: titleColor }} className="text-lg leading-none">−</span>
               </button>
-              <span className="w-12 text-center font-sans text-olive tabular-nums">{guests.length}</span>
+              <span className="w-12 text-center font-sans">{guests.length}</span>
               <button
                 type="button"
                 onClick={() => setGuestCount(1)}
