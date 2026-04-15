@@ -53,14 +53,16 @@ export default function Design5Page() {
         />
       </section>
 
-      <section className="relative w-full min-h-screen flex items-start justify-center pt-[6rem] md:pt-[7rem] pb-16 md:pb-24 overflow-hidden">
+      <section className="relative w-full flex items-start justify-center pt-6 md:pt-10 pb-6 md:pb-10 overflow-hidden">
         <img
           src={config.images.detailsImg}
           alt=""
           aria-hidden="true"
           className="absolute inset-0 w-full h-full object-cover pointer-events-none"
         />
-        <div className="relative z-10 flex flex-col items-center justify-center gap-10 md:gap-14 px-10 md:px-16 md:max-w-2xl lg:max-w-3xl md:mx-auto">
+        <div className="design5-frame relative z-10 mx-4 md:mx-auto md:max-w-2xl lg:max-w-3xl p-[6px] md:p-[8px]">
+          <div className="border border-[#fff6e7]/70 p-1 md:p-1.5">
+            <div className=" border border-[#fff6e7] flex flex-col items-center justify-center gap-8 md:gap-12 px-8 md:px-16 py-8 md:py-10">
           <motion.p
             className="text-center font-bold text-[#fff6e7] leading-loose tracking-wide"
             style={{ fontSize: '1.1rem', fontFamily: "'Alef', sans-serif" }}
@@ -208,6 +210,8 @@ export default function Design5Page() {
               </a>
             </div>
           </motion.div>
+            </div>
+          </div>
         </div>
       </section>
 
