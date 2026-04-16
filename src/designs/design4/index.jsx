@@ -25,16 +25,12 @@ const fadeUp = {
 
 export default function Design4Page() {
   const [step, setStep] = useState('cover')
-  const secVideoRef = useRef(null)
   const navigatingRef = useRef(false)
 
   const handleNavigate = (target) => {
     if (navigatingRef.current) return
     navigatingRef.current = true
     setStep('content')
-    if (secVideoRef.current) {
-      secVideoRef.current.play().catch(() => {})
-    }
     setTimeout(() => {
       const el = document.getElementById(target)
       if (el) el.scrollIntoView({ behavior: 'smooth' })
@@ -88,12 +84,9 @@ export default function Design4Page() {
         className={step === 'content' ? 'bg-white' : 'pointer-events-none fixed inset-0 -z-10'}
       >
         <section id="huppa" className="relative w-full h-screen flex flex-col overflow-hidden">
-          <video
-            ref={secVideoRef}
-            src={config.videos.oneVideo}
-            muted
-            playsInline
-            preload="auto"
+          <img
+            src={config.images.introImg}
+            alt=""
             className="absolute inset-0 w-full h-full object-cover"
           />
           <div className="relative z-10 flex flex-col items-center justify-start gap-6 md:gap-12 px-8 md:px-16 mt-[10rem] md:max-w-2xl lg:max-w-3xl md:mx-auto">
