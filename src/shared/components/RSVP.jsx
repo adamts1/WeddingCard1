@@ -214,7 +214,7 @@ function Firecrackers({ colors }) {
 }
 
 const inputBase =
-  'w-full px-4 py-3 md:py-3.5 rounded-lg border border-blush-light bg-cream-light text-olive md:text-lg placeholder:text-olive-light/50 focus:border-blush-dark focus:ring-2 focus:ring-blush/20 outline-none transition-all duration-200'
+  'w-full px-4 py-3 md:py-3.5 rounded-lg border border-blush-light bg-white/30 backdrop-blur-sm text-olive md:text-lg placeholder:text-olive-light/50 focus:border-blush-dark focus:ring-2 focus:ring-blush/20 outline-none transition-all duration-200'
 
 const emptyGuest = () => ({ name: '' })
 
@@ -388,7 +388,7 @@ export default function RSVP({ config = {} }) {
         <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
           <div className="flex items-center justify-between gap-4">
             <label className="font-sans text-sm md:text-base font-medium text-olive">{t.adults}</label>
-            <div className="flex items-center border border-blush-light rounded-lg overflow-hidden bg-cream-light">
+            <div className="flex items-center border border-blush-light rounded-lg overflow-hidden bg-white/30 backdrop-blur-sm">
               <button
                 type="button"
                 onClick={() => setGuestCount(-1)}
@@ -396,7 +396,7 @@ export default function RSVP({ config = {} }) {
                 className="w-10 h-10 flex items-center justify-center text-olive hover:bg-blush-light/30 transition-colors"
 
               >
-                <span   style={{ color: titleColor }} className="text-lg leading-none">−</span>
+                <span className="text-lg leading-none">−</span>
               </button>
               <span className="w-12 text-center font-sans">{guests.length}</span>
               <button
@@ -413,7 +413,7 @@ export default function RSVP({ config = {} }) {
           {guests.map((guest, i) => (
             <div
               key={i}
-              className="rounded-xl border border-blush-light/50 bg-cream-light/40 p-4 space-y-3"
+              className="rounded-xl border border-blush-light/50 bg-white/20 backdrop-blur-sm p-4 space-y-3"
             >
               <p className="font-sans text-sm font-semibold text-olive-light">{t.guestLabel(i)}</p>
               <div>

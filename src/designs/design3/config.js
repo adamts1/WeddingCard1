@@ -37,7 +37,7 @@ export const config = {
 
   // ── Parents ──
   parents: {
-    bride: { label: 'הורי הכלה', names: 'דליה וחיים אלפסי' },
+    bride: { label: 'הורי הכלה', names: 'דליה וחיים כהן' },
     groom: { label: 'הורי החתן', names: 'אתי ואיתן כסלר' },
   },
 
