@@ -60,7 +60,7 @@ export default function Design3Page() {
               <div className="absolute z-10 left-1/2 -translate-x-1/2 top-[36%]">
                 <motion.button
                   onClick={() => handleNavigate('huppa')}
-                  className="px-8 py-3 border-2 border-gray-800 text-gray-800 font-serif text-xl tracking-[0.3em] hover:bg-gray-800 hover:text-white transition-all duration-300"
+                  className="px-8 py-3 border-2 border-gray-800 text-gray-800 font-sans text-xl tracking-[0.3em] hover:bg-gray-800 hover:text-white transition-all duration-300"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.3, duration: 0.5 }}
@@ -91,7 +91,7 @@ export default function Design3Page() {
               <div className="absolute z-10 left-1/2 -translate-x-1/2 top-[30%] flex flex-row gap-6">
                 <motion.button
                   onClick={() => handleNavigate('huppa')}
-                  className="px-8 py-3 border-2 border-gray-800 text-gray-800 font-serif text-xl tracking-[0.3em] hover:bg-gray-800 hover:text-white transition-all duration-300"
+                  className="px-8 py-3 border-2 border-gray-800 text-gray-800 font-sans text-xl tracking-[0.3em] hover:bg-gray-800 hover:text-white transition-all duration-300"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3, duration: 0.5 }}
@@ -100,7 +100,7 @@ export default function Design3Page() {
                 </motion.button>
                 <motion.button
                   onClick={() => handleNavigate('rsvp')}
-                  className="px-8 py-3 border-2 border-gray-800 text-gray-800 font-serif text-xl tracking-[0.3em] hover:bg-gray-800 hover:text-white transition-all duration-300"
+                  className="px-8 py-3 border-2 border-gray-800 text-gray-800 font-sans text-xl tracking-[0.3em] hover:bg-gray-800 hover:text-white transition-all duration-300"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5, duration: 0.5 }}
@@ -135,8 +135,8 @@ export default function Design3Page() {
           <div className="relative flex flex-col items-center justify-start gap-6 md:gap-12 px-8 md:px-16 mt-[10rem] md:max-w-2xl lg:max-w-3xl md:mx-auto">
             {/* Blessing text */}
             <motion.p
-              className="text-center font-bold text-gray-800 leading-loose tracking-wide"
-              style={{ fontSize: '1.1rem', fontFamily: "'Playpen Sans Hebrew', sans-serif" }}
+              className="text-center font-sans font-bold text-gray-800 leading-loose tracking-wide"
+              style={{ fontSize: '1.1rem' }}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
@@ -162,8 +162,8 @@ export default function Design3Page() {
 
             {/* Biblical verse */}
             <motion.p
-              className="text-center text-gray-700 leading-loose"
-              style={{ fontSize: '1.1rem', fontFamily: "'Suez One', serif" }}
+              className="text-center font-sans text-gray-700 leading-loose"
+              style={{ fontSize: '1.1rem' }}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
@@ -173,8 +173,7 @@ export default function Design3Page() {
               {config.event.verse}
             </motion.p>
             <motion.p
-              className="text-center text-base md:text-lg font-medium text-gray-400 tracking-widest"
-              style={{ fontFamily: "'Playpen Sans Hebrew', sans-serif" }}
+              className="text-center font-sans text-base md:text-lg font-medium text-gray-400 tracking-widest"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
@@ -208,11 +207,11 @@ export default function Design3Page() {
             >
               <div className="flex flex-col text-center">
                 <p className="text-sm md:text-base tracking-widest text-gray-400 mb-1 md:mb-2">{config.parents.bride.label}</p>
-                <p className="font-serif text-base md:text-2xl lg:text-3xl text-gray-800">{config.parents.bride.names}</p>
+                <p className="font-sans text-base md:text-2xl lg:text-3xl text-gray-800">{config.parents.bride.names}</p>
               </div>
               <div className="flex flex-col text-center">
                 <p className="text-sm md:text-base tracking-widest text-gray-400 mb-1 md:mb-2">{config.parents.groom.label}</p>
-                <p className="font-serif text-base md:text-2xl lg:text-3xl text-gray-800">{config.parents.groom.names}</p>
+                <p className="font-sans text-base md:text-2xl lg:text-3xl text-gray-800">{config.parents.groom.names}</p>
               </div>
             </motion.div>
 
@@ -227,7 +226,7 @@ export default function Design3Page() {
 
             {/* Couple names */}
             <motion.p
-              className="text-center font-display text-4xl md:text-6xl lg:text-7xl font-bold text-gray-800"
+              className="text-center font-sans text-4xl md:text-6xl lg:text-7xl font-bold text-gray-800"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
@@ -249,7 +248,7 @@ export default function Design3Page() {
               <p className="font-sans text-2xl md:text-4xl lg:text-5xl text-gray-800 tracking-widest">
                 {config.event.dateText}
               </p>
-              <p className="font-serif text-base md:text-xl text-gray-500 mt-2">
+              <p className="font-sans text-base md:text-xl text-gray-500 mt-2">
                 {hebrewDate}
               </p>
             </motion.div>
@@ -280,7 +279,7 @@ export default function Design3Page() {
               <p className="font-sans text-xl md:text-3xl text-gray-800 mt-2">
                 {config.event.ceremonyText}
               </p>
-              <p className="font-display text-3xl md:text-5xl font-bold text-gray-800 mt-1">
+              <p className="font-sans text-3xl md:text-5xl font-bold text-gray-800 mt-1">
                 {config.event.ceremonyTime}
               </p>
             </motion.div>
@@ -303,7 +302,7 @@ export default function Design3Page() {
               custom={5}
               variants={fadeUp}
             >
-              <p className="font-serif text-2xl md:text-4xl text-gray-800 mb-1">
+              <p className="font-sans text-2xl md:text-4xl text-gray-800 mb-1">
                 {config.event.venueName}
               </p>
               <p className="font-sans text-lg md:text-2xl text-gray-500">
