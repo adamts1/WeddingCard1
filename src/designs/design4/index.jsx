@@ -211,7 +211,9 @@ export default function Design4Page() {
               custom={3}
               variants={fadeUp}
             >
-              <Countdown targetDate={config.targetDate} embedded />
+              <div className="[&_*]:!font-sans">
+                <Countdown targetDate={config.targetDate} embedded />
+              </div>
             </motion.div>
 
             <motion.div

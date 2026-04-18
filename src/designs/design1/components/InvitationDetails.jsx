@@ -12,11 +12,11 @@ export default function InvitationDetails({ config }) {
       <div className="w-full max-w-3xl mx-auto flex flex-row justify-between items-start gap-2 md:gap-12 mb-10 md:mb-14 min-w-0 overflow-hidden">
         <div className="flex flex-col text-center min-w-0 flex-1 overflow-hidden">
           <p className="text-[10px] md:text-xs tracking-widest text-olive-light mb-1 md:mb-2">{parents.bride.label}</p>
-          <p className="font-serif text-base md:text-xl lg:text-2xl break-words text-olive">{parents.bride.names}</p>
+          <p className="font-sans text-base md:text-xl lg:text-2xl break-words text-olive">{parents.bride.names}</p>
         </div>
         <div className="flex flex-col text-center min-w-0 flex-1 overflow-hidden">
           <p className="text-[10px] md:text-xs tracking-widest text-olive-light mb-1 md:mb-2">{parents.groom.label}</p>
-          <p className="font-serif text-base md:text-xl lg:text-2xl break-words text-olive">{parents.groom.names}</p>
+          <p className="font-sans text-base md:text-xl lg:text-2xl break-words text-olive">{parents.groom.names}</p>
         </div>
       </div>
 
@@ -26,19 +26,19 @@ export default function InvitationDetails({ config }) {
         </p>
 
         <div className="text-center mb-6 md:mb-10">
-          <h2 className="font-display text-6xl md:text-7xl lg:text-8xl font-bold tracking-wide" style={{ color: couple.person1.color }}>
+          <h2 className="font-sans text-6xl md:text-7xl lg:text-8xl font-bold tracking-wide" style={{ color: couple.person1.color }}>
             {couple.person1.name}
           </h2>
-          <p className="font-serif text-2xl md:text-3xl text-olive-light my-2">&</p>
-          <h2 className="font-display text-6xl md:text-7xl lg:text-8xl font-bold tracking-wide" style={{ color: couple.person2.color }}>
+          <p className="font-sans text-2xl md:text-3xl text-olive-light my-2">&</p>
+          <h2 className="font-sans text-6xl md:text-7xl lg:text-8xl font-bold tracking-wide" style={{ color: couple.person2.color }}>
             {couple.person2.name}
           </h2>
         </div>
 
-        <p className="text-center font-serif text-xl md:text-2xl lg:text-3xl text-olive mb-2">
+        <p className="text-center font-sans text-xl md:text-2xl lg:text-3xl text-olive mb-2">
           {event.dateText}
         </p>
-        <div className="flex justify-center mb-4">
+        <div className="flex justify-center mb-4 [&_*]:!font-sans">
           <Countdown targetDate={targetDate} embedded />
         </div>
 

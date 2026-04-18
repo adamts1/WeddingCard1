@@ -261,7 +261,9 @@ export default function Design3Page() {
               custom={3}
               variants={fadeUp}
             >
-              <Countdown targetDate={config.targetDate} embedded />
+              <div className="[&_*]:!font-sans">
+                <Countdown targetDate={config.targetDate} embedded />
+              </div>
             </motion.div>
 
             {/* Ceremony */}
