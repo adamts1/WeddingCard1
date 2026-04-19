@@ -222,13 +222,12 @@ export default function Design5Page() {
           alt=""
           aria-hidden="true"
           className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+          style={{ objectPosition: 'center 80%' }}
         />
         <div className="relative z-10 [&_section]:md:!min-h-0 [&_section]:md:!justify-start [&_section]:md:!py-12 [&_input]:!bg-transparent [&_textarea]:!bg-transparent [&_input]:!border-[#ff7051]/40 [&_textarea]:!border-[#ff7051]/40 [&_.bg-cream-light\/40]:!bg-transparent [&_.bg-cream-light]:!bg-transparent">
           <RSVP config={{ ...config.rsvp, contacts: config.contacts }} />
           <footer className="relative z-10 py-4 bg-transparent">
-            <p className="text-center text-[10px] font-bold text-[#ff7051]">
-              &copy; TSITYAT - AI Agency
-            </p>
+        
           </footer>
         </div>
       </div>
