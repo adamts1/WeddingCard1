@@ -3,8 +3,6 @@
  */
 
 import heroVideo from '../../../assets/design5/main.mp4'
-import detailsImg from '../../../assets/design5/details.png'
-import rsvpImg from '../../../assets/design5/rsvp.png'
 
 export const config = {
   title: 'שרה ואדם - Save the Date',
@@ -23,7 +21,6 @@ export const config = {
   targetDate: new Date(2026, 4, 25, 19, 0, 0),
 
   videos: { heroVideo },
-  images: { detailsImg, rsvpImg },
 
   couple: {
     person1: { name: 'שרה', color: '#1E5233' },
