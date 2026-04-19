@@ -30,7 +30,8 @@ export default function Design5Page() {
       lang={config.lang}
     >
       <style>{`
-        .design5-root, .design5-root * { font-family: 'Alef', sans-serif !important; }
+        @import url('https://fonts.googleapis.com/css2?family=Alef:wght@400;700&family=Fredoka:wght@300..700&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Playpen+Sans+Hebrew:wght@100..800&family=Suez+One&display=swap');
+        .design5-root, .design5-root * { font-family: 'Google Sans', sans-serif !important; }
         .design5-root .text-olive,
         .design5-root .text-olive-light { color: #ff7051 !important; }
         .design5-root .bg-cream-light { background-color: transparent !important; }
@@ -53,13 +54,19 @@ export default function Design5Page() {
         />
       </section>
 
-      <section className="relative w-full flex items-start justify-center pt-6 md:pt-10 pb-6 md:pb-10 overflow-hidden bg-[#fff6e7]">
+      <section className="relative w-full flex items-start justify-center pt-32 md:pt-48 pb-6 md:pb-10 overflow-hidden bg-[#fff6e7]">
+        <img
+          src={config.images.detailsImg}
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+        />
         <div className="design5-frame relative z-10 mx-4 md:mx-auto md:max-w-2xl lg:max-w-3xl p-[6px] md:p-[8px]">
           <div className="p-1 md:p-1.5">
             <div className="flex flex-col items-center justify-center gap-8 md:gap-12 px-8 md:px-16 py-8 md:py-10">
           <motion.p
             className="text-center font-bold text-[#ff7051] leading-loose tracking-wide"
-            style={{ fontSize: '1.1rem', fontFamily: "'Alef', sans-serif" }}
+            style={{ fontSize: '1.1rem', fontFamily: "'Google Sans', sans-serif" }}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
@@ -210,6 +217,12 @@ export default function Design5Page() {
       </section>
 
       <div id="rsvp" className="relative overflow-hidden design5-rsvp bg-[#fff6e7]">
+        <img
+          src={config.images.rsvpImg}
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+        />
         <div className="relative z-10 [&_section]:md:!min-h-0 [&_section]:md:!justify-start [&_section]:md:!py-12 [&_input]:!bg-transparent [&_textarea]:!bg-transparent [&_input]:!border-[#ff7051]/40 [&_textarea]:!border-[#ff7051]/40 [&_.bg-cream-light\/40]:!bg-transparent [&_.bg-cream-light]:!bg-transparent">
           <RSVP config={{ ...config.rsvp, contacts: config.contacts }} />
           <footer className="relative z-10 py-4 bg-transparent">

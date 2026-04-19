@@ -31,7 +31,7 @@ export default {
         },
       },
       fontFamily: {
-        display: ['Amatic SC', 'Heebo', 'system-ui', 'sans-serif'],
+        display: ['Heebo', 'system-ui', 'sans-serif'],
         heading: ['Secular One', 'Heebo', 'system-ui', 'sans-serif'],
         serif: ['Frank Ruhl Libre', 'Georgia', 'serif'],
         sans: ['Noto Sans Hebrew', 'Heebo', 'system-ui', 'sans-serif'],
