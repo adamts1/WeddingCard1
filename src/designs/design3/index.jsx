@@ -6,14 +6,8 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import RSVP from '../../shared/components/RSVP'
-import Countdown from '../../shared/components/Countdown'
 import config from './config'
 
-const hebrewDate = new Intl.DateTimeFormat('he-u-ca-hebrew', {
-  day: 'numeric',
-  month: 'long',
-  year: 'numeric',
-}).format(config.targetDate)
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -193,44 +187,16 @@ export default function Design3Page() {
           />
         </section>
 
-        {/* Section 3 – Parents, date, venue */}
-        <section className="relative w-full bg-white h-screen flex items-start justify-center pt-12 md:pt-16 pb-16 md:pb-24 overflow-hidden">
+        {/* Section 3 – Couple, date, schedule, venue, parents */}
+        <section className="relative w-full bg-white min-h-screen flex items-center justify-center py-16 md:py-24 overflow-hidden">
           <div className="relative flex flex-col items-center justify-center gap-10 md:gap-14 px-8 md:px-16 md:max-w-2xl lg:max-w-3xl md:mx-auto">
-            {/* Parents */}
-            <motion.div
-              className="flex flex-row justify-center items-start gap-8 md:gap-16"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              custom={0}
-              variants={fadeUp}
-            >
-              <div className="flex flex-col text-center">
-                <p className="text-sm md:text-base tracking-widest text-gray-400 mb-1 md:mb-2">{config.parents.bride.label}</p>
-                <p className="font-sans text-base md:text-2xl lg:text-3xl text-gray-800">{config.parents.bride.names}</p>
-              </div>
-              <div className="flex flex-col text-center">
-                <p className="text-sm md:text-base tracking-widest text-gray-400 mb-1 md:mb-2">{config.parents.groom.label}</p>
-                <p className="font-sans text-base md:text-2xl lg:text-3xl text-gray-800">{config.parents.groom.names}</p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              className="w-16 md:w-24 h-px bg-gray-300"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              custom={1}
-              variants={fadeUp}
-            />
-
             {/* Couple names */}
             <motion.p
-              className="text-center font-sans text-4xl md:text-6xl lg:text-7xl font-bold text-gray-800"
+              className="text-center font-sans text-6xl md:text-7xl lg:text-8xl font-bold text-gray-800"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              custom={2}
+              custom={0}
               variants={fadeUp}
             >
               {config.couple.person1.name} ו{config.couple.person2.name}
@@ -242,47 +208,14 @@ export default function Design3Page() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              custom={3}
+              custom={1}
               variants={fadeUp}
             >
-              <p className="font-sans text-2xl md:text-4xl lg:text-5xl text-gray-800 tracking-widest">
+              <p className="font-sans text-4xl md:text-5xl lg:text-6xl text-gray-800 tracking-widest">
                 {config.event.dateText}
               </p>
-              <p className="font-sans text-base md:text-xl text-gray-500 mt-2">
-                {hebrewDate}
-              </p>
-            </motion.div>
-
-            <motion.div
-              className="w-full"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              custom={3}
-              variants={fadeUp}
-            >
-              <div className="[&_*]:!font-sans">
-                <Countdown targetDate={config.targetDate} embedded />
-              </div>
-            </motion.div>
-
-            {/* Ceremony */}
-            <motion.div
-              className="text-center"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              custom={4}
-              variants={fadeUp}
-            >
-              <p className="font-sans text-lg md:text-2xl text-gray-600">
-                {config.event.receptionText}
-              </p>
-              <p className="font-sans text-xl md:text-3xl text-gray-800 mt-2">
-                {config.event.ceremonyText}
-              </p>
-              <p className="font-sans text-3xl md:text-5xl font-bold text-gray-800 mt-1">
-                {config.event.ceremonyTime}
+              <p className="font-sans text-lg md:text-2xl text-gray-500 mt-2">
+           י״ג באייר ה׳תשפ״ו
               </p>
             </motion.div>
 
@@ -291,7 +224,34 @@ export default function Design3Page() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              custom={5}
+              custom={2}
+              variants={fadeUp}
+            />
+
+            {/* Schedule – three columns */}
+            <motion.div
+              className="w-full grid grid-cols-3 gap-4 md:gap-8"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              custom={3}
+              variants={fadeUp}
+            >
+              {config.schedule.map((item) => (
+                <div key={item.label} className="flex flex-col items-center text-center gap-2 md:gap-3">
+                  <p className="font-sans text-base md:text-xl text-gray-700">{item.label}</p>
+                  <img src={item.icon} alt="" aria-hidden="true" className="w-16 h-16 md:w-20 md:h-20 object-contain" />
+                  <p className="font-sans text-2xl md:text-3xl font-bold text-gray-800">{item.time}</p>
+                </div>
+              ))}
+            </motion.div>
+
+            <motion.div
+              className="w-16 md:w-24 h-px bg-gray-300"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              custom={4}
               variants={fadeUp}
             />
 
@@ -304,10 +264,10 @@ export default function Design3Page() {
               custom={5}
               variants={fadeUp}
             >
-              <p className="font-sans text-2xl md:text-4xl text-gray-800 mb-1">
+              <p className="font-sans text-3xl md:text-5xl text-gray-800 mb-1">
                 {config.event.venueName}
               </p>
-              <p className="font-sans text-lg md:text-2xl text-gray-500">
+              <p className="font-sans text-xl md:text-3xl text-gray-500">
                 {config.event.venueCity}
               </p>
               <div className="flex justify-center mt-4">
@@ -322,6 +282,34 @@ export default function Design3Page() {
                     <path d="M12 2L4.5 20.29l1.35.71L12 18l6.15 3 1.35-.71L12 2z" />
                   </svg>
                 </a>
+              </div>
+            </motion.div>
+
+            <motion.div
+              className="w-16 md:w-24 h-px bg-gray-300"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              custom={6}
+              variants={fadeUp}
+            />
+
+            {/* Parents */}
+            <motion.div
+              className="flex flex-row justify-center items-start gap-8 md:gap-16"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              custom={7}
+              variants={fadeUp}
+            >
+              <div className="flex flex-col text-center">
+                <p className="text-base md:text-lg tracking-widest text-gray-400 mb-1 md:mb-2">{config.parents.bride.label}</p>
+                <p className="font-sans text-lg md:text-3xl lg:text-4xl text-gray-800">{config.parents.bride.names}</p>
+              </div>
+              <div className="flex flex-col text-center">
+                <p className="text-base md:text-lg tracking-widest text-gray-400 mb-1 md:mb-2">{config.parents.groom.label}</p>
+                <p className="font-sans text-lg md:text-3xl lg:text-4xl text-gray-800">{config.parents.groom.names}</p>
               </div>
             </motion.div>
           </div>

@@ -6,6 +6,9 @@ import heroImg from '../../../assets/design3/main.png'
 import main2Img from '../../../assets/design3/nain2.png'
 import jerusalemImg from '../../../assets/design3/second.png'
 import topImg from '../../../assets/design3/top.png'
+import receptionIcon from '../../../assets/design3/elements/6.png'
+import ceremonyIcon from '../../../assets/design3/elements/5.png'
+import diningIcon from '../../../assets/design3/elements/4.png'
 
 export const config = {
   // ── Meta ──
@@ -24,10 +27,16 @@ export const config = {
   },
 
   // ── Date ──
-  targetDate: new Date(2026, 3, 30, 19, 0, 0), // April 30, 2026 at 7:00 PM
 
   // ── Images ──
   images: { heroImg, main2Img, jerusalemImg, topImg },
+
+  // ── Schedule ──
+  schedule: [
+    { label: 'קבלת פנים', time: '19:30', icon: receptionIcon },
+    { label: 'חופה וקידושין', time: '20:30', icon: ceremonyIcon },
+    { label: 'אוכלים ורוקדים', time: '21:00', icon: diningIcon },
+  ],
 
   // ── Couple ──
   couple: {
