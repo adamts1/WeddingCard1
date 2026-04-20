@@ -5,7 +5,8 @@
 import heroVideo from '../../../assets/design4/main.mp4'
 import introImg from '../../../assets/design4/intro.png'
 import detailsImg from '../../../assets/design4/details.png'
-import footerImg from '../../../assets/design4/footer.png'
+import footerBgImg from '../../../assets/design4/bg.png'
+import footerElementsImg from '../../../assets/design4/elements.png'
 import jerusalemImg from '../../../assets/design3/second.png'
 import topImg from '../../../assets/design3/top.png'
 
@@ -20,13 +21,13 @@ export const config = {
     blush: { DEFAULT: '#C9B99A', light: '#DDD1B8', dark: '#A89B7A' },
     magenta: { DEFAULT: '#D4AF37' },
     green: { DEFAULT: '#D4AF37', light: '#E6CC6A', dark: '#B8960E' },
-    olive: { DEFAULT: '#2C2C2C', light: '#555555', muted: '#444444' },
+    olive: { DEFAULT: '#111827', light: '#111827', muted: '#111827' },
   },
 
   targetDate: new Date(2026, 3, 30, 19, 0, 0),
 
   videos: { heroVideo },
-  images: { jerusalemImg, topImg, detailsImg, footerImg, introImg },
+  images: { jerusalemImg, topImg, detailsImg, footerBgImg, footerElementsImg, introImg },
 
   couple: {
     person1: { name: 'ציפורה', color: '#2C2C2C' },
@@ -57,7 +58,7 @@ export const config = {
   ],
 
   rsvp: {
-    titleColor: '#D4AF37',
+    titleColor: '#111827',
     submitButtonColor: '#2C2C2C',
     submitButtonHoverColor: '#444444',
     celebrationColors: ['#D4AF37', '#E6CC6A', '#2C2C2C', '#C9B99A', '#FAFAF8', '#B8960E', '#DDD1B8', '#555555'],

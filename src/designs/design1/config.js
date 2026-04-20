@@ -21,7 +21,7 @@ export const config = {
     blush: { DEFAULT: '#E8A0B5', light: '#F0D4DE', dark: '#D4789A' },
     magenta: { DEFAULT: '#CF43A8', light: '#D96CBB', dark: '#B8368F' },
     green: { DEFAULT: '#508330', light: '#7CB342', dark: '#3B6B2B' },
-    olive: { DEFAULT: '#6B6B3E', light: '#8B8B5E', muted: '#7D7D50' },
+    olive: { DEFAULT: '#111827', light: '#111827', muted: '#111827' },
   },
 
   // ── Date ──

@@ -11,7 +11,6 @@
   body {
     background-color: #F5F2EC;
     overflow-x: hidden;
-    color: #6B6B3E;
     @apply font-sans antialiased;
   }
 }
