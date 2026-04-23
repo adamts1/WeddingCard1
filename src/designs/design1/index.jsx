@@ -42,9 +42,10 @@ export default function Design1Page() {
           viewport={{ once: true, amount: 0.15 }}
           style={{
             backgroundImage: `url(${config.images.rsvpImg})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
+            backgroundSize: '100% auto',
+            backgroundPosition: 'top center',
             backgroundRepeat: 'no-repeat',
+            backgroundColor: '#F6F4F0',
           }}
         >
           <RSVP config={{ ...config.rsvp, contacts: config.contacts, sectionBg: 'bg-transparent' }} />
