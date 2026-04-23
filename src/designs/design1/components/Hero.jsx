@@ -20,7 +20,7 @@ export default function Hero({ images }) {
 
   return (
     <header className="relative w-full bg-cream md:px-4 md:py-6 md:flex md:justify-center">
-      <div className="relative w-full h-[100dvh] md:h-auto md:max-w-2xl lg:max-w-3xl md:mx-auto md:aspect-[1170/2532] overflow-hidden">
+      <div className="relative w-full h-[100svh] md:h-auto md:max-w-2xl lg:max-w-3xl md:mx-auto md:aspect-[1170/2532] overflow-hidden">
         <img
           src={heroImage}
           alt="Wedding Invitation"
