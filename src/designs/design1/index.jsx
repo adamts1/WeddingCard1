@@ -5,7 +5,6 @@
 import { motion } from 'framer-motion'
 import Hero from './components/Hero'
 import RSVP from '../../shared/components/RSVP'
-import SectionDivider from '../../shared/components/SectionDivider'
 import config from './config'
 
 const fadeInUp = {
@@ -16,13 +15,12 @@ const fadeInUp = {
 export default function Design1Page() {
   return (
     <div
-      className="min-h-screen-dvh md:min-h-screen bg-cream"
+      className="min-h-screen-dvh md:min-h-screen bg-cream font-alef [&_*]:!font-alef"
       dir={config.dir}
       lang={config.lang}
     >
       <div className="animate-page-enter opacity-0">
         <Hero images={config.images} />
-        <SectionDivider />
         <motion.section
           className="bg-cream flex justify-center"
           variants={fadeInUp}
@@ -36,14 +34,20 @@ export default function Design1Page() {
             className="block w-full h-auto max-w-2xl lg:max-w-3xl"
           />
         </motion.section>
-        <SectionDivider />
         <motion.div
+          className="pt-40 md:pt-56"
           variants={fadeInUp}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.15 }}
+          style={{
+            backgroundImage: `url(${config.images.rsvpImg})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+          }}
         >
-          <RSVP config={{ ...config.rsvp, contacts: config.contacts }} />
+          <RSVP config={{ ...config.rsvp, contacts: config.contacts, sectionBg: 'bg-transparent' }} />
         </motion.div>
         <footer className="relative w-full overflow-hidden">
           <div className="w-[200%] -ml-[50%] md:w-full md:ml-0">

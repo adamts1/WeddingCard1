@@ -8,6 +8,7 @@ import flower1 from '../../../assets/design1/flower1.png'
 import flower2 from '../../../assets/design1/flower2.png'
 import footerImg from '../../../assets/design1/footer.png'
 import huppaImg from '../../../assets/design1/huppa.png'
+import rsvpImg from '../../../assets/design1/rsvp.png'
 
 export const config = {
   // ── Meta ──
@@ -18,7 +19,7 @@ export const config = {
 
   // ── Colors (palette) ──
   palette: {
-    cream: { DEFAULT: '#F5F2EC', light: '#FAF8F4', dark: '#EDE9E1' },
+    cream: { DEFAULT: '#F6F4F0', light: '#F6F4F0', dark: '#F6F4F0' },
     blush: { DEFAULT: '#E8A0B5', light: '#F0D4DE', dark: '#D4789A' },
     magenta: { DEFAULT: '#CF43A8', light: '#D96CBB', dark: '#B8368F' },
     green: { DEFAULT: '#508330', light: '#7CB342', dark: '#3B6B2B' },
@@ -29,7 +30,7 @@ export const config = {
   targetDate: new Date(2026, 4, 25, 19, 0, 0), // May 25, 2026 at 7:00 PM
 
   // ── Images ──
-  images: { heroImage, flower1, flower2, footerImg, huppaImg },
+  images: { heroImage, flower1, flower2, footerImg, huppaImg, rsvpImg },
 
   // ── Couple ──
   couple: {
@@ -62,10 +63,13 @@ export const config = {
   // ── RSVP config ──
   rsvp: {
     titleColor: '#CF43A8',
-    submitButtonColor: '#508330',
-    submitButtonHoverColor: '#5C943A',
+    submitButtonColor: 'transparent',
+    submitButtonHoverColor: 'transparent',
+    submitButtonBorderColor: '#CF44A8',
+    submitButtonTextColor: '#000000',
     celebrationColors: ['#E8A0B5', '#CF43A8', '#D4789A', '#F0D4DE', '#508330', '#7CB342', '#FFD700', '#F472B6'],
     lang: 'he',
+    labels: { rsvp: '', intro: '' },
   },
 }
 

@@ -236,6 +236,8 @@ export default function RSVP({ config = {} }) {
   const celebrationColors = config.celebrationColors || ['#E8A0B5', '#CF43A8', '#D4789A', '#F0D4DE', '#508330', '#7CB342', '#FFD700', '#F472B6']
   const submitBg = config.submitButtonColor || '#508330'
   const submitHover = config.submitButtonHoverColor || '#5C943A'
+  const submitBorderColor = config.submitButtonBorderColor || 'transparent'
+  const submitTextColor = config.submitButtonTextColor || '#FFFFFF'
   const titleColor = config.titleColor || '#CF43A8'
   const lang = config.lang || 'he'
   const sectionBg = config.sectionBg || 'bg-cream'
@@ -375,15 +377,19 @@ export default function RSVP({ config = {} }) {
       className={`py-8 md:min-h-screen md:flex md:flex-col md:justify-center md:py-24 px-4 md:px-10 ${sectionBg} text-olive overflow-hidden`}
     >
       <div className="max-w-lg md:max-w-2xl lg:max-w-3xl mx-auto w-full">
-        <h2
-          className="font-display text-4xl md:text-5xl lg:text-6xl text-center font-bold mb-2 md:mb-4"
-          style={{ color: titleColor }}
-        >
-          {t.rsvp}
-        </h2>
-        <p className="text-center font-sans text-base md:text-lg text-olive-light mb-4 md:mb-8">
-          {t.intro}
-        </p>
+        {t.rsvp && (
+          <h2
+            className="font-display text-4xl md:text-5xl lg:text-6xl text-center font-bold mb-2 md:mb-4"
+            style={{ color: titleColor }}
+          >
+            {t.rsvp}
+          </h2>
+        )}
+        {t.intro && (
+          <p className="text-center font-sans text-base md:text-lg text-olive-light mb-4 md:mb-8">
+            {t.intro}
+          </p>
+        )}
 
         <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
           <div className="flex items-center justify-between gap-4">
@@ -478,8 +484,8 @@ export default function RSVP({ config = {} }) {
           <button
             type="submit"
             disabled={submitting}
-            className="w-full py-3.5 px-6 rounded-lg text-white font-sans font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-            style={{ backgroundColor: submitBg }}
+            className="w-full py-3.5 px-6 rounded-lg font-sans font-medium transition-colors border-2 disabled:opacity-50 disabled:cursor-not-allowed"
+            style={{ backgroundColor: submitBg, borderColor: submitBorderColor, color: submitTextColor }}
             onMouseEnter={(e) => !submitting && (e.target.style.backgroundColor = submitHover)}
             onMouseLeave={(e) => !submitting && (e.target.style.backgroundColor = submitBg)}
           >
