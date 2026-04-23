@@ -7,6 +7,7 @@ import heroImage from '../../../assets/design1/main.png'
 import flower1 from '../../../assets/design1/flower1.png'
 import flower2 from '../../../assets/design1/flower2.png'
 import footerImg from '../../../assets/design1/footer.png'
+import huppaImg from '../../../assets/design1/huppa.png'
 
 export const config = {
   // ── Meta ──
@@ -28,7 +29,7 @@ export const config = {
   targetDate: new Date(2026, 4, 25, 19, 0, 0), // May 25, 2026 at 7:00 PM
 
   // ── Images ──
-  images: { heroImage, flower1, flower2, footerImg },
+  images: { heroImage, flower1, flower2, footerImg, huppaImg },
 
   // ── Couple ──
   couple: {

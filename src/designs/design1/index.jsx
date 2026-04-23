@@ -3,7 +3,6 @@
  */
 
 import Hero from './components/Hero'
-import InvitationDetails from './components/InvitationDetails'
 import RSVP from '../../shared/components/RSVP'
 import SectionDivider from '../../shared/components/SectionDivider'
 import config from './config'
@@ -18,7 +17,13 @@ export default function Design1Page() {
       <div className="animate-page-enter opacity-0">
         <Hero images={config.images} />
         <SectionDivider />
-        <InvitationDetails config={config} />
+        <section className="bg-cream flex justify-center">
+          <img
+            src={config.images.huppaImg}
+            alt=""
+            className="block w-full h-auto max-w-2xl lg:max-w-3xl"
+          />
+        </section>
         <SectionDivider />
         <RSVP config={{ ...config.rsvp, contacts: config.contacts }} />
         <footer className="relative w-full overflow-hidden">
