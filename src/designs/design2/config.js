@@ -6,10 +6,7 @@ import illustrationImg from '../../../assets/design2/image.png'
 import textImg from '../../../assets/design2/text.png'
 import bgImg from '../../../assets/design2/bg.png'
 import huppa from '../../../assets/design2/huppa.png'
-import dec1 from '../../../assets/design2/dec1.png'
-import dec2 from '../../../assets/design2/dec2.png'
 import rsvpImg from '../../../assets/design2/rsvp.png'
-import rsvpDecImg from '../../../assets/design2/dec.png'
 
 
 export const config = {
@@ -32,7 +29,7 @@ export const config = {
   targetDate: new Date(2026, 8, 20, 19, 0, 0), // September 20, 2026 at 7:00 PM
 
   // ── Images ──
-  images: { illustrationImg, textImg, bgImg, huppa, dec1, dec2, rsvpImg, rsvpDecImg },
+  images: { illustrationImg, textImg, bgImg, huppa, rsvpImg },
 
   // ── Couple ──
   couple: {

@@ -8,7 +8,6 @@ import detailsImg from '../../../assets/design4/details.png'
 import footerBgImg from '../../../assets/design4/bg.png'
 import footerElementsImg from '../../../assets/design4/elements.png'
 import jerusalemImg from '../../../assets/design3/second.png'
-import topImg from '../../../assets/design3/top.png'
 
 export const config = {
   title: 'ציפורה ורונן - Save the Date',
@@ -27,7 +26,7 @@ export const config = {
   targetDate: new Date(2026, 3, 30, 19, 0, 0),
 
   videos: { heroVideo },
-  images: { jerusalemImg, topImg, detailsImg, footerBgImg, footerElementsImg, introImg },
+  images: { jerusalemImg, detailsImg, footerBgImg, footerElementsImg, introImg },
 
   couple: {
     person1: { name: 'ציפורה', color: '#2C2C2C' },

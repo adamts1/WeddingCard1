@@ -25,16 +25,6 @@ export default function Design2Page() {
       >
         <div className="relative w-full">
           <img src={config.images.huppa} alt="" className="relative w-full h-auto" />
-          <img
-            src={config.images.dec1}
-            alt="" aria-hidden="true"
-            className="absolute inset-0 w-full h-full object-contain pointer-events-none"
-          />
-          <img
-            src={config.images.dec2}
-            alt="" aria-hidden="true"
-            className="absolute inset-0 w-full h-full object-contain pointer-events-none"
-          />
 
           {/* Countdown overlay */}
           <div className="absolute left-1/2 -translate-x-1/2 bottom-[54%] w-[88%] max-w-md">
@@ -59,10 +49,10 @@ export default function Design2Page() {
       <div
         className="pt-40 md:pt-56 [&_#contact_h2]:!font-alef"
         style={{
-          backgroundImage: `url(${config.images.rsvpImg}), url(${config.images.rsvpDecImg}), url(${config.images.bgImg})`,
-          backgroundSize: '100% auto, 100% auto, cover',
-          backgroundPosition: 'top center, top center, top center',
-          backgroundRepeat: 'no-repeat, no-repeat, repeat-y',
+          backgroundImage: `url(${config.images.rsvpImg}), url(${config.images.bgImg})`,
+          backgroundSize: '100% auto, cover',
+          backgroundPosition: 'top center, top center',
+          backgroundRepeat: 'no-repeat, repeat-y',
         }}
       >
         <RSVP config={{ ...config.rsvp, contacts: config.contacts }} />

@@ -77,11 +77,6 @@ export default function Design3Page() {
             transition={{ duration: 0.6 }}
           >
             <div className="relative w-full h-full">
-              <img
-                src={config.images.topImg}
-                alt="ציפורה ורונן"
-                className="w-full h-full object-cover absolute inset-0"
-              />
               <div className="absolute z-10 left-1/2 -translate-x-1/2 top-[30%] flex flex-row gap-6">
                 <motion.button
                   onClick={() => handleNavigate('huppa')}
@@ -116,16 +111,6 @@ export default function Design3Page() {
       >
         {/* Section 2 – Blessing text + Jerusalem illustration below */}
         <section id="huppa" className="relative w-full bg-white h-screen flex flex-col overflow-hidden">
-          <motion.img
-            src={config.images.topImg}
-            alt=""
-            aria-hidden="true"
-            className="absolute top-0 left-0 w-full h-auto block pointer-events-none"
-            initial={{ y: '-100%', opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 3, ease: 'easeOut' }}
-          />
           <div className="relative flex flex-col items-center justify-start gap-6 md:gap-12 px-8 md:px-16 mt-[10rem] md:max-w-2xl lg:max-w-3xl md:mx-auto">
             {/* Blessing text */}
             <motion.p
@@ -183,12 +168,41 @@ export default function Design3Page() {
             src={config.images.jerusalemImg}
             alt="ירושלים"
             className="absolute left-0 w-full h-auto block pointer-events-none"
-            style={{ bottom: '0' }}
+            style={{
+              bottom: '0',
+              maskImage: 'linear-gradient(to top, black 75%, transparent 100%)',
+              WebkitMaskImage: 'linear-gradient(to top, black 75%, transparent 100%)',
+            }}
+          />
+
+          {/* Soft fade overlay at bottom of section to bleed into next */}
+          <div
+            aria-hidden="true"
+            className="absolute bottom-0 left-0 w-full h-32 pointer-events-none"
+            style={{
+              background: 'linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.85) 60%, #ffffff 100%)',
+            }}
           />
         </section>
 
         {/* Section 3 – Couple, date, schedule, venue, parents */}
         <section className="relative w-full bg-white min-h-screen flex items-center justify-center py-16 md:py-24 overflow-hidden">
+          {/* Soft fade overlay at top of section, mirrored from previous */}
+          <div
+            aria-hidden="true"
+            className="absolute top-0 left-0 w-full h-24 pointer-events-none"
+            style={{
+              background: 'linear-gradient(to top, transparent 0%, rgba(255,255,255,0.7) 100%)',
+            }}
+          />
+          {/* Soft fade overlay at bottom blending into RSVP */}
+          <div
+            aria-hidden="true"
+            className="absolute bottom-0 left-0 w-full h-32 pointer-events-none"
+            style={{
+              background: 'linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.85) 60%, #ffffff 100%)',
+            }}
+          />
           <div className="relative flex flex-col items-center justify-center gap-10 md:gap-14 px-8 md:px-16 md:max-w-2xl lg:max-w-3xl md:mx-auto">
             {/* Couple names */}
             <motion.p
@@ -315,7 +329,15 @@ export default function Design3Page() {
           </div>
         </section>
 
-        <div id="rsvp" className="font-alef [&_*]:!font-alef">
+        <div id="rsvp" className="relative font-alef [&_*]:!font-alef">
+          {/* Soft fade-in from previous section */}
+          <div
+            aria-hidden="true"
+            className="absolute top-0 left-0 w-full h-24 md:h-32 pointer-events-none z-10"
+            style={{
+              background: 'linear-gradient(to bottom, #ffffff 0%, rgba(255,255,255,0.7) 50%, transparent 100%)',
+            }}
+          />
           <RSVP config={{ ...config.rsvp, contacts: config.contacts }} />
         </div>
 

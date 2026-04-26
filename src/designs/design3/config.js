@@ -5,7 +5,6 @@
 import heroImg from '../../../assets/design3/main.png'
 import main2Img from '../../../assets/design3/nain2.png'
 import jerusalemImg from '../../../assets/design3/second.png'
-import topImg from '../../../assets/design3/top.png'
 import receptionIcon from '../../../assets/design3/elements/6.png'
 import ceremonyIcon from '../../../assets/design3/elements/5.png'
 import diningIcon from '../../../assets/design3/elements/4.png'
@@ -29,7 +28,7 @@ export const config = {
   // ── Date ──
 
   // ── Images ──
-  images: { heroImg, main2Img, jerusalemImg, topImg },
+  images: { heroImg, main2Img, jerusalemImg },
 
   // ── Schedule ──
   schedule: [
@@ -72,7 +71,7 @@ export const config = {
 
   // ── RSVP config ──
   rsvp: {
-    titleColor: '#D4AF37',
+    titleColor: '#000000',
     submitButtonColor: 'transparent',
     submitButtonHoverColor: 'rgba(0,0,0,0.05)',
     submitButtonBorderColor: '#000000',
