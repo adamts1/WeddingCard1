@@ -5,11 +5,9 @@
 import illustrationImg from '../../../assets/design2/image.png'
 import textImg from '../../../assets/design2/text.png'
 import bgImg from '../../../assets/design2/bg.png'
-import lav1 from '../../../assets/design2/lavander/1.png'
-import lav2 from '../../../assets/design2/lavander/2.png'
-import lav3 from '../../../assets/design2/lavander/3.png'
-import lav4 from '../../../assets/design2/lavander/4.png'
-import lav5 from '../../../assets/design2/lavander/5.png'
+import huppa1 from '../../../assets/design2/huppa1.png'
+import huppa2 from '../../../assets/design2/huppa2.png'
+
 
 export const config = {
   // ── Meta ──
@@ -31,7 +29,7 @@ export const config = {
   targetDate: new Date(2026, 8, 20, 19, 0, 0), // September 20, 2026 at 7:00 PM
 
   // ── Images ──
-  images: { illustrationImg, textImg, bgImg, lavender: [lav1, lav2, lav3, lav4, lav5] },
+  images: { illustrationImg, textImg, bgImg, huppa1, huppa2 },
 
   // ── Couple ──
   couple: {

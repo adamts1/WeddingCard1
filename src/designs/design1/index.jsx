@@ -34,12 +34,8 @@ export default function Design1Page() {
             className="block w-full h-auto max-w-2xl lg:max-w-3xl"
           />
         </motion.section>
-        <motion.div
+        <div
           className="pt-40 md:pt-56"
-          variants={fadeInUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.15 }}
           style={{
             backgroundImage: `url(${config.images.rsvpImg})`,
             backgroundSize: '100% auto',
@@ -49,7 +45,7 @@ export default function Design1Page() {
           }}
         >
           <RSVP config={{ ...config.rsvp, contacts: config.contacts, sectionBg: 'bg-transparent' }} />
-        </motion.div>
+        </div>
         <footer className="relative w-full overflow-hidden">
           <div className="w-[200%] -ml-[50%] md:w-full md:ml-0">
             <img
