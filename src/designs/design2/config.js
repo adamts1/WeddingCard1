@@ -5,8 +5,11 @@
 import illustrationImg from '../../../assets/design2/image.png'
 import textImg from '../../../assets/design2/text.png'
 import bgImg from '../../../assets/design2/bg.png'
-import huppa1 from '../../../assets/design2/huppa1.png'
-import huppa2 from '../../../assets/design2/huppa2.png'
+import huppa from '../../../assets/design2/huppa.png'
+import dec1 from '../../../assets/design2/dec1.png'
+import dec2 from '../../../assets/design2/dec2.png'
+import rsvpImg from '../../../assets/design2/rsvp.png'
+import rsvpDecImg from '../../../assets/design2/dec.png'
 
 
 export const config = {
@@ -29,7 +32,7 @@ export const config = {
   targetDate: new Date(2026, 8, 20, 19, 0, 0), // September 20, 2026 at 7:00 PM
 
   // ── Images ──
-  images: { illustrationImg, textImg, bgImg, huppa1, huppa2 },
+  images: { illustrationImg, textImg, bgImg, huppa, dec1, dec2, rsvpImg, rsvpDecImg },
 
   // ── Couple ──
   couple: {
@@ -63,11 +66,14 @@ export const config = {
   // ── RSVP config ──
   rsvp: {
     titleColor: '#A78BCF',
-    submitButtonColor: '#A78BCF',
-    submitButtonHoverColor: '#C4AEDF',
+    submitButtonColor: 'transparent',
+    submitButtonHoverColor: 'transparent',
+    submitButtonBorderColor: '#A78BCF',
+    submitButtonTextColor: '#000000',
     celebrationColors: ['#C5B9A8', '#A78BCF', '#C4AEDF', '#DDD5C9', '#A89B8A', '#5C5C42', '#D4C9B8', '#8A6BB5'],
     sectionBg: 'bg-transparent',
     lang: 'he',
+    labels: { rsvp: '', intro: '' },
   },
 }
 
