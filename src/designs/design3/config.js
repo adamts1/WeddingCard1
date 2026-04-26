@@ -73,8 +73,10 @@ export const config = {
   // ── RSVP config ──
   rsvp: {
     titleColor: '#D4AF37',
-    submitButtonColor: '#2C2C2C',
-    submitButtonHoverColor: '#444444',
+    submitButtonColor: 'transparent',
+    submitButtonHoverColor: 'rgba(0,0,0,0.05)',
+    submitButtonBorderColor: '#000000',
+    submitButtonTextColor: '#000000',
     celebrationColors: ['#D4AF37', '#E6CC6A', '#2C2C2C', '#C9B99A', '#FAFAF8', '#B8960E', '#DDD1B8', '#555555'],
     sectionBg: 'bg-transparent',
     lang: 'he',

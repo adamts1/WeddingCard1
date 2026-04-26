@@ -315,7 +315,7 @@ export default function Design3Page() {
           </div>
         </section>
 
-        <div id="rsvp">
+        <div id="rsvp" className="font-alef [&_*]:!font-alef">
           <RSVP config={{ ...config.rsvp, contacts: config.contacts }} />
         </div>
 
