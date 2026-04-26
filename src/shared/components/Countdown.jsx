@@ -46,7 +46,7 @@ export default function Countdown({ targetDate, labels: customLabels, embedded =
     return (
       <Wrapper className={wrapperClass}>
         <div className="max-w-2xl mx-auto text-center">
-          <p className="font-display text-2xl text-olive">{labels.done}</p>
+          <p className="font-sans text-2xl text-olive">{labels.done}</p>
         </div>
       </Wrapper>
     )
@@ -69,7 +69,7 @@ export default function Countdown({ targetDate, labels: customLabels, embedded =
               key={label}
               className={`flex flex-col items-center rounded-lg bg-cream-light border border-blush-light ${isCompact ? 'min-w-[2.5rem] md:min-w-[4rem] lg:min-w-[5rem] py-1.5 px-1.5 md:py-3 md:px-3 shadow-sm' : 'min-w-[4.5rem] md:min-w-[5.5rem] py-4 px-3 rounded-xl shadow-soft'}`}
             >
-              <span className={`font-display text-olive tabular-nums font-bold ${isCompact ? 'text-lg md:text-2xl lg:text-3xl' : 'text-3xl md:text-4xl'}`}>
+              <span className={`font-sans text-olive tabular-nums font-bold ${isCompact ? 'text-lg md:text-2xl lg:text-3xl' : 'text-3xl md:text-4xl'}`}>
                 {pad(value)}
               </span>
               <span className={`font-sans text-olive-light ${isCompact ? 'text-[10px] md:text-sm mt-0.5' : 'text-sm mt-1'}`}>{label}</span>

@@ -6,7 +6,6 @@ import heroVideo from '../../../assets/design4/main.mp4'
 import introImg from '../../../assets/design4/intro.png'
 import detailsImg from '../../../assets/design4/details.png'
 import footerBgImg from '../../../assets/design4/bg.png'
-import footerElementsImg from '../../../assets/design4/elements.png'
 import jerusalemImg from '../../../assets/design3/second.png'
 
 export const config = {
@@ -26,7 +25,7 @@ export const config = {
   targetDate: new Date(2026, 3, 30, 19, 0, 0),
 
   videos: { heroVideo },
-  images: { jerusalemImg, detailsImg, footerBgImg, footerElementsImg, introImg },
+  images: { jerusalemImg, detailsImg, footerBgImg, introImg },
 
   couple: {
     person1: { name: 'ציפורה', color: '#2C2C2C' },

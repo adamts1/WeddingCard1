@@ -99,11 +99,11 @@ export default function Design5Page() {
             variants={fadeUp}
           >
             <div className="flex flex-col text-center">
-              <p className="text-sm md:text-base tracking-widest font-semibold text-[#ff7051] mb-1 md:mb-2">{config.parents.bride.label}</p>
+              <p className="text-sm md:text-base tracking-widest font-semibold text-black mb-1 md:mb-2">{config.parents.bride.label}</p>
               <p className="font-serif font-bold text-base md:text-2xl lg:text-3xl text-[#ff7051]">{config.parents.bride.names}</p>
             </div>
             <div className="flex flex-col text-center">
-              <p className="text-sm md:text-base tracking-widest font-semibold text-[#ff7051] mb-1 md:mb-2">{config.parents.groom.label}</p>
+              <p className="text-sm md:text-base tracking-widest font-semibold text-black mb-1 md:mb-2">{config.parents.groom.label}</p>
               <p className="font-serif font-bold text-base md:text-2xl lg:text-3xl text-[#ff7051]">{config.parents.groom.names}</p>
             </div>
           </motion.div>
@@ -205,8 +205,8 @@ export default function Design5Page() {
                 aria-label="ניווט למיקום"
                 className="flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full border-2 border-[#ff7051] text-[#ff7051] hover:bg-[#ff7051] hover:text-[#ff7051] transition-colors"
               >
-                <svg className="w-5 h-5 md:w-6 md:h-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                  <path d="M12 2L4.5 20.29l1.35.71L12 18l6.15 3 1.35-.71L12 2z" />
+                <svg className="w-5 h-5 md:w-6 md:h-6" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 2L4.5 20.29l1.35.71L12 18l6.15 3 1.35-.71L12 2z" fill="#000" />
                 </svg>
               </a>
             </div>

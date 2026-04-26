@@ -285,12 +285,6 @@ export default function Design4Page() {
             aria-hidden="true"
             className="absolute inset-0 w-full h-full object-cover pointer-events-none"
           />
-          <img
-            src={config.images.footerElementsImg}
-            alt=""
-            aria-hidden="true"
-            className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-          />
           <div className="relative z-10 [&_section]:md:!min-h-0 [&_section]:md:!justify-start [&_section]:md:!py-12 [&_*]:!font-sans">
             <RSVP config={{ ...config.rsvp, contacts: config.contacts }} />
             <footer className="relative z-10 py-4 bg-transparent">
