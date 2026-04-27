@@ -9,6 +9,7 @@ import Design2Page from './designs/design2'
 import Design3Page from './designs/design3'
 import Design4Page from './designs/design4'
 import Design5Page from './designs/design5'
+import Design6Page from './designs/design6'
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
       <Route path="/design3" element={<Design3Page />} />
       <Route path="/design4" element={<Design4Page />} />
       <Route path="/design5" element={<Design5Page />} />
+      <Route path="/design6" element={<Design6Page />} />
       <Route path="*" element={<Navigate to="/design1" replace />} />
     </Routes>
   )
