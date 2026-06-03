@@ -54,7 +54,7 @@ export default function Design7Page() {
 
       <div className="mx-auto w-full max-w-[480px]">
         {/* 1. Hero – video background with a button into the invitation */}
-        <section className="py-2 px-[5px]" style={frameBg}>
+        <section className="py-6 px-2.5" style={frameBg}>
           <div className={`relative aspect-[462/1000] overflow-hidden ${frameBorder}`}>
             <video
               src={config.videos.heroVideo}
@@ -76,7 +76,7 @@ export default function Design7Page() {
         </section>
 
         {/* 2. Details – navigation button overlaid below the venue address */}
-        <section id="details" className="py-2 px-[5px]" style={frameBg}>
+        <section id="details" className="py-6 px-2.5" style={frameBg}>
           <div className={`relative overflow-hidden ${frameBorder}`}>
             <img src={config.images.detailsImg} alt="" className="block w-full h-auto" />
             <div className="absolute inset-x-0 top-[57%] z-10 flex justify-center">
@@ -96,7 +96,7 @@ export default function Design7Page() {
         </section>
 
         {/* 3. RSVP – image backdrop with the live form below the baked-in title */}
-        <section id="rsvp" className="py-2 px-[5px]" style={frameBg}>
+        <section id="rsvp" className="py-6 px-2.5" style={frameBg}>
           <div
             className={`design7-rsvp overflow-hidden ${frameBorder}`}
             style={{
