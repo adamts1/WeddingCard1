@@ -26,15 +26,17 @@ export default function Design7Page() {
 
   return (
     <div
-      className="design7-root min-h-screen-dvh md:min-h-screen bg-cover bg-top"
+      className="design7-root fixed inset-0 overflow-y-auto overscroll-contain bg-cover bg-top"
       style={{
         backgroundColor: config.paperBg,
         backgroundImage: `url(${config.images.bgImg})`,
+        WebkitOverflowScrolling: 'touch',
       }}
       dir={config.dir}
       lang={config.lang}
     >
       <style>{`
+        html, body { overflow: hidden; height: 100%; overscroll-behavior: none; }
         .design7-root .text-olive,
         .design7-root .text-olive-light { color: #7E632E !important; }
         .design7-rsvp input, .design7-rsvp textarea {
