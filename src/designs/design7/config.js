@@ -7,6 +7,7 @@
 import heroVideo from '../../../assets/design7/hero.mp4'
 import detailsImg from '../../../assets/design7/2.png'
 import rsvpImg from '../../../assets/design7/3.png'
+import bgImg from '../../../assets/design7/background.png'
 
 const gold = '#9C7C3C'
 const goldDark = '#7E632E'
@@ -23,7 +24,7 @@ export const config = {
   targetDate: new Date(2026, 7, 3, 19, 0, 0),
 
   videos: { heroVideo },
-  images: {  detailsImg, rsvpImg },
+  images: { detailsImg, rsvpImg, bgImg },
 
   contacts: [
     { name: 'הלל', phone: '000-0000000', tel: '+0000000000' },
